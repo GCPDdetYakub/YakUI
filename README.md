@@ -14,7 +14,7 @@ Output in `artifacts\`: `YakUI-<version>-win-<arch>-setup.exe`, `YakUI-<version>
 
 # YakUI — структура папок при установке
 
-`%LOCALAPPDATA%` = `C:\Users\<вы>\AppData\Local`, `%APPDATA%` = `C:\Users\<вы>\AppData\Roaming`.
+`%LOCALAPPDATA%` = `C:\Users\USERNAME\AppData\Local`, `%APPDATA%` = `C:\Users\USERNAME\AppData\Roaming`.
 
 ## 1. Сама программа
 
@@ -22,7 +22,7 @@ Output in `artifacts\`: `YakUI-<version>-win-<arch>-setup.exe`, `YakUI-<version>
 %LOCALAPPDATA%\Programs\YakUI\      ← папку можно сменить при установке
 ├─ YakUI.exe                        ← окно программы
 ├─ YakUI.Cli.exe                    ← консольная версия (команды list, install…)
-├─ *.dll                            ← библиотеки .NET и Avalonia (их много, это нормально)
+├─ *.dll                            ← библиотеки .NET и Avalonia
 └─ unins000.exe                     ← удаление программы
 ```
 
