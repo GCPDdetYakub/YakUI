@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Ядро без UI и без платформенного кода (AD-05, AD-08): только net8.0. -->
+  <PropertyGroup>
+    <RootNamespace>YakUI.Core</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="8.0.11" />
+    <PackageReference Include="YamlDotNet" Version="16.3.0" />
+    <PackageReference Include="System.IO.Hashing" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="YakUI.Tests" />
+  </ItemGroup>
+
+  <!-- Переводы сообщений ядра (FR-82): ключ → формат. -->
+  <ItemGroup>
+    <EmbeddedResource Include="Localization\messages_*.json" LogicalName="YakUI.Core.Localization.%(Filename).json" />
+  </ItemGroup>
+
+</Project>
