@@ -1,0 +1,87 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:YakUI.App.ViewModels"
+             xmlns:r="using:YakUI.App.Resources"
+             x:Class="YakUI.App.Views.DownloadsView"
+             x:DataType="vm:DownloadsViewModel">
+
+  <UserControl.Styles>
+    <Style Selector="TextBlock.section">
+      <Setter Property="FontWeight" Value="SemiBold" />
+      <Setter Property="FontSize" Value="15" />
+    </Style>
+  </UserControl.Styles>
+
+  <Grid RowDefinitions="Auto,Auto,*,Auto,*">
+    <!-- Папка загрузок (FR-35). -->
+    <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="12" Margin="0,0,0,12">
+      <TextBlock x:Name="FolderText" Classes="muted" Text="{Binding FolderText}" VerticalAlignment="Center" />
+      <Button Content="{x:Static r:Strings.Dl_OpenFolder}" Command="{Binding OpenFolderCommand}" />
+    </StackPanel>
+
+    <!-- Очередь (FR-38). -->
+    <Grid Grid.Row="1" ColumnDefinitions="*,Auto" Margin="0,0,0,6">
+      <TextBlock Classes="section" Text="{x:Static r:Strings.Dl_Queue}" />
+      <Button Grid.Column="1" Content="{x:Static r:Strings.Dl_ClearFinished}" Command="{Binding ClearFinishedCommand}" />
+    </Grid>
+    <Panel Grid.Row="2" Margin="0,0,0,16">
+      <ListBox x:Name="QueueList" ItemsSource="{Binding Queue}" BorderBrush="{DynamicResource DividerBrush}" BorderThickness="1" CornerRadius="6">
+        <ListBox.ItemTemplate>
+          <DataTemplate x:DataType="vm:DownloadItemViewModel">
+            <Grid ColumnDefinitions="*,220,Auto,Auto" Margin="2,4">
+              <StackPanel Spacing="2">
+                <TextBlock Text="{Binding Filename}" FontWeight="SemiBold" TextTrimming="CharacterEllipsis" />
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                  <TextBlock Classes="muted" FontSize="12" Text="{Binding PackageText}" />
+                  <TextBlock Classes="muted" FontSize="12" Text="{Binding StateText}" />
+                  <TextBlock Classes="muted" FontSize="12" Text="{Binding SizeText}" />
+                </StackPanel>
+                <TextBlock FontSize="12" Foreground="{DynamicResource StatusIncompatibleFg}" Text="{Binding Error}" TextWrapping="Wrap"
+                           IsVisible="{Binding Error, Converter={x:Static ObjectConverters.IsNotNull}}" />
+              </StackPanel>
+              <ProgressBar Grid.Column="1" Value="{Binding Percent}" IsIndeterminate="{Binding IsIndeterminate}" VerticalAlignment="Center" Margin="12,0" />
+              <Button Grid.Column="2" Content="{x:Static r:Strings.Dl_Cancel}" Command="{Binding CancelCommand}" IsVisible="{Binding CanCancel}" Margin="0,0,6,0" />
+              <Button Grid.Column="3" Content="{x:Static r:Strings.Dl_Retry}" Command="{Binding RetryCommand}" IsVisible="{Binding CanRetry}" />
+            </Grid>
+          </DataTemplate>
+        </ListBox.ItemTemplate>
+      </ListBox>
+      <TextBlock Classes="muted" Text="{x:Static r:Strings.Dl_QueueEmpty}" IsVisible="{Binding IsQueueEmpty}"
+                 HorizontalAlignment="Center" VerticalAlignment="Center" />
+    </Panel>
+
+    <!-- Библиотека (FR-35, FR-37). -->
+    <Grid Grid.Row="3" ColumnDefinitions="*,Auto,Auto" Margin="0,0,0,6">
+      <TextBlock Classes="section" Text="{x:Static r:Strings.Dl_Library}" />
+      <Button Grid.Column="1" x:Name="RevealButton" Content="{x:Static r:Strings.Dl_Reveal}" Command="{Binding RevealCommand}" Margin="0,0,8,0" />
+      <Button Grid.Column="2" x:Name="DeleteButton" Content="{x:Static r:Strings.Dl_Delete}" Command="{Binding DeleteCommand}" />
+    </Grid>
+    <Panel Grid.Row="4">
+      <ListBox x:Name="LibraryList" ItemsSource="{Binding Library}" SelectedItem="{Binding SelectedFile}"
+               BorderBrush="{DynamicResource DividerBrush}" BorderThickness="1" CornerRadius="6">
+        <ListBox.ItemTemplate>
+          <DataTemplate x:DataType="vm:LibraryRowViewModel">
+            <Grid ColumnDefinitions="*,140,90,170,120" Margin="2,2">
+              <StackPanel>
+                <TextBlock Text="{Binding Filename}" FontWeight="SemiBold" TextTrimming="CharacterEllipsis" />
+                <TextBlock Classes="muted" FontSize="12" Text="{Binding PackageText}" />
+                <TextBlock FontSize="12" Foreground="{DynamicResource StatusIncompatibleFg}" Text="{Binding MissingText}"
+                           IsVisible="{Binding MissingText, Converter={x:Static ObjectConverters.IsNotNull}}" />
+              </StackPanel>
+              <TextBlock Grid.Column="1" Classes="muted" Text="{Binding Tag}" FontFamily="Consolas,Menlo,monospace" VerticalAlignment="Center" />
+              <TextBlock Grid.Column="2" Text="{Binding Size}" VerticalAlignment="Center" />
+              <StackPanel Grid.Column="3" VerticalAlignment="Center" ToolTip.Tip="{Binding ServerDate}">
+                <TextBlock Text="{Binding PublishedText}" />
+                <TextBlock Classes="muted" Text="{Binding Date}" FontSize="12" />
+              </StackPanel>
+              <TextBlock Grid.Column="4" Classes="muted" Text="{Binding ShortSha}" FontFamily="Consolas,Menlo,monospace" VerticalAlignment="Center"
+                         ToolTip.Tip="{Binding Record.Sha256}" />
+            </Grid>
+          </DataTemplate>
+        </ListBox.ItemTemplate>
+      </ListBox>
+      <TextBlock Classes="muted" Text="{x:Static r:Strings.Dl_LibraryEmpty}" IsVisible="{Binding IsLibraryEmpty}"
+                 HorizontalAlignment="Center" VerticalAlignment="Center" />
+    </Panel>
+  </Grid>
+</UserControl>

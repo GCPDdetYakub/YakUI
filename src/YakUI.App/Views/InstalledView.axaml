@@ -1,0 +1,137 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:YakUI.App.ViewModels"
+             xmlns:v="using:YakUI.App.Views"
+             xmlns:r="using:YakUI.App.Resources"
+             x:Class="YakUI.App.Views.InstalledView"
+             x:DataType="vm:InstalledViewModel">
+
+  <UserControl.Styles>
+    <Style Selector="TextBlock.head">
+      <Setter Property="FontWeight" Value="SemiBold" />
+      <Setter Property="FontSize" Value="12" />
+      <Setter Property="Foreground" Value="{DynamicResource MutedText}" />
+    </Style>
+    <Style Selector="Border.banner">
+      <Setter Property="CornerRadius" Value="6" />
+      <Setter Property="Padding" Value="12,8" />
+      <Setter Property="Margin" Value="0,0,0,8" />
+    </Style>
+  </UserControl.Styles>
+
+  <DockPanel>
+    <!-- Панель: фильтр, обновить, действия (FR-58). -->
+    <Grid DockPanel.Dock="Top" ColumnDefinitions="300,Auto,*,Auto,Auto,Auto,Auto,Auto" Margin="0,0,0,10">
+      <TextBox Grid.Column="0" Text="{Binding FilterText}" Watermark="{x:Static r:Strings.Inst_Filter}" />
+      <Button Grid.Column="1" x:Name="RefreshButton" Content="{x:Static r:Strings.Inst_Refresh}" Command="{Binding RefreshCommand}" Margin="8,0,0,0" />
+      <TextBlock Grid.Column="2" Classes="muted" Text="{Binding CountText}" VerticalAlignment="Center" Margin="16,0" />
+      <Button Grid.Column="3" x:Name="OpenFolderButton" Content="{x:Static r:Strings.Inst_OpenFolder}" Command="{Binding OpenFolderCommand}" Margin="0,0,8,0" />
+      <Button Grid.Column="4" x:Name="ShowInCatalogButton" Content="{x:Static r:Strings.Inst_ShowInCatalog}" Command="{Binding ShowInCatalogCommand}" Margin="0,0,8,0" />
+      <Button Grid.Column="5" x:Name="UpdateButton" Content="{x:Static r:Strings.Lc_Update}" Command="{Binding UpdateCommand}" Margin="0,0,8,0" />
+      <Button Grid.Column="6" x:Name="PinButton" Content="{x:Static r:Strings.Lc_PinToggle}" Command="{Binding TogglePinCommand}" Margin="0,0,8,0" />
+      <Button Grid.Column="7" x:Name="UninstallButton" Content="{x:Static r:Strings.Inst_Remove}" Command="{Binding UninstallCommand}" />
+    </Grid>
+
+    <!-- Массовые действия (FR-59). -->
+    <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Spacing="8" Margin="0,0,0,10">
+      <Button x:Name="UpdateAllButton" Classes="accent" Content="{x:Static r:Strings.Lc_UpdateAll}" Command="{Binding UpdateAllCommand}" />
+      <Button x:Name="ImportButton" Content="{x:Static r:Strings.Imp_AddFile}" Command="{Binding ImportFileCommand}" ToolTip.Tip="{x:Static r:Strings.Imp_DropHint}" />
+      <Button x:Name="ImportFolderButton" Content="{x:Static r:Strings.Imp_AddFolder}" Command="{Binding ImportFolderCommand}" ToolTip.Tip="{x:Static r:Strings.Imp_DropHint}" />
+      <Button x:Name="UpdateCheckedButton" Content="{x:Static r:Strings.Lc_UpdateChecked}" Command="{Binding UpdateCheckedCommand}" />
+      <Button x:Name="UninstallCheckedButton" Content="{x:Static r:Strings.Lc_UninstallChecked}" Command="{Binding UninstallCheckedCommand}" />
+      <ProgressBar IsIndeterminate="True" Width="60" MinWidth="60" IsVisible="{Binding IsUninstalling}" VerticalAlignment="Center" />
+    </StackPanel>
+
+    <!-- ОВ-19: Rhino сам обновляет пакеты при запуске. -->
+    <Border DockPanel.Dock="Top" Classes="banner" Background="{DynamicResource StatusBackwardBg}"
+            IsVisible="{Binding AutoUpdateText, Converter={x:Static ObjectConverters.IsNotNull}}">
+      <TextBlock x:Name="AutoUpdateBanner" Text="{Binding AutoUpdateText}" Foreground="{DynamicResource StatusBackwardFg}" TextWrapping="Wrap" />
+    </Border>
+
+    <!-- Итог удаления (FR-48). -->
+    <Border DockPanel.Dock="Top" Classes="banner" Background="{DynamicResource StatusNeutralBg}"
+            IsVisible="{Binding ActionMessage, Converter={x:Static ObjectConverters.IsNotNull}}">
+      <TextBlock x:Name="ActionMessageText" Text="{Binding ActionMessage}" Foreground="{DynamicResource StatusNeutralFg}" TextWrapping="Wrap" />
+    </Border>
+
+    <!-- FR-05: Rhino запущен — изменения после перезапуска. -->
+    <Border DockPanel.Dock="Top" Classes="banner" Background="{DynamicResource StatusBackwardBg}"
+            IsVisible="{Binding RunningText, Converter={x:Static ObjectConverters.IsNotNull}}">
+      <TextBlock x:Name="RunningBanner" Text="{Binding RunningText}" Foreground="{DynamicResource StatusBackwardFg}" TextWrapping="Wrap" />
+    </Border>
+    <Border DockPanel.Dock="Top" Classes="banner" Background="{DynamicResource StatusNeutralBg}"
+            IsVisible="{Binding YakListProblem, Converter={x:Static ObjectConverters.IsNotNull}}">
+      <TextBlock Text="{Binding YakListProblem}" Foreground="{DynamicResource StatusNeutralFg}" TextWrapping="Wrap" />
+    </Border>
+
+    <!-- Заголовок колонок (FR-56). -->
+    <Grid DockPanel.Dock="Top" ColumnDefinitions="44,2*,1.2*,1.4*,1*,1.2*,1.4*" Margin="12,0,12,4">
+      <TextBlock Grid.Column="1" Classes="head" Text="{x:Static r:Strings.Inst_ColName}" />
+      <TextBlock Grid.Column="2" Classes="head" Text="{x:Static r:Strings.Inst_ColVersion}" />
+      <TextBlock Grid.Column="3" Classes="head" Text="{x:Static r:Strings.Inst_ColSource}" />
+      <TextBlock Grid.Column="4" Classes="head" Text="{x:Static r:Strings.Inst_ColKind}" />
+      <TextBlock Grid.Column="5" Classes="head" Text="{x:Static r:Strings.Inst_ColStatus}" />
+      <TextBlock Grid.Column="6" Classes="head" Text="{x:Static r:Strings.Inst_ColUpdate}" />
+    </Grid>
+
+    <Panel>
+      <ListBox x:Name="InstalledList" ItemsSource="{Binding Rows}" SelectedItem="{Binding SelectedRow}"
+               BorderBrush="{DynamicResource DividerBrush}" BorderThickness="1" CornerRadius="6">
+        <ListBox.ItemTemplate>
+          <DataTemplate x:DataType="vm:InstalledRowViewModel">
+            <Grid ColumnDefinitions="76,2*,1.2*,1.4*,1*,1.2*,1.4*" ToolTip.Tip="{Binding Tooltip}">
+              <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="4" VerticalAlignment="Top">
+                <!-- Галочка выборочных действий (FR-59). -->
+                <CheckBox IsChecked="{Binding IsChecked}" IsEnabled="{Binding IsEditable}" MinWidth="0" Padding="0" />
+                <v:PackageIconView Width="32" Height="32" DataContext="{Binding Icon}" />
+              </StackPanel>
+              <StackPanel Grid.Column="1" Spacing="1" Margin="0,0,8,0">
+                <TextBlock Text="{Binding Name}" FontWeight="SemiBold" TextTrimming="CharacterEllipsis" />
+                <TextBlock Classes="muted" FontSize="11" Text="{Binding TargetTitle}" TextTrimming="CharacterEllipsis"
+                           IsVisible="{Binding TargetTitle, Converter={x:Static ObjectConverters.IsNotNull}}" />
+                <TextBlock Classes="muted" FontSize="11" Text="{Binding Path}" TextTrimming="CharacterEllipsis" />
+              </StackPanel>
+              <StackPanel Grid.Column="2" Spacing="1">
+                <TextBlock Text="{Binding Version}" />
+                <!-- FR-58: закреплённая версия; изменена вне YakUI — предупреждение (ОВ-19). -->
+                <TextBlock FontSize="11" Text="{Binding PinnedText}" TextWrapping="Wrap" FontWeight="SemiBold"
+                           Foreground="{DynamicResource StatusBackwardFg}"
+                           IsVisible="{Binding PinnedText, Converter={x:Static ObjectConverters.IsNotNull}}" />
+                <TextBlock Classes="muted" FontSize="11" Text="{Binding InactiveText}" TextWrapping="Wrap"
+                           IsVisible="{Binding InactiveText, Converter={x:Static ObjectConverters.IsNotNull}}" />
+              </StackPanel>
+              <StackPanel Grid.Column="3" Spacing="1">
+                <TextBlock Text="{Binding SourceText}" />
+                <TextBlock Classes="muted" FontSize="11" Text="{Binding ModeText}" />
+              </StackPanel>
+              <TextBlock Grid.Column="4" Text="{Binding KindText}" />
+              <StackPanel Grid.Column="5" Spacing="3">
+                <Border Classes="badge" Classes.backward="{Binding IsPendingRestart}" HorizontalAlignment="Left">
+                  <TextBlock Text="{Binding StatusText}" />
+                </Border>
+                <Border Classes="badge incompatible" HorizontalAlignment="Left" IsVisible="{Binding HasDiscrepancy}">
+                  <TextBlock Text="{Binding DiscrepancyText}" />
+                </Border>
+                <!-- FR-47: двойная установка. -->
+                <Border Classes="badge backward" HorizontalAlignment="Left" IsVisible="{Binding HasDuplicate}">
+                  <TextBlock Text="{Binding DuplicateText}" TextWrapping="Wrap" />
+                </Border>
+              </StackPanel>
+              <StackPanel Grid.Column="6" Spacing="1">
+                <TextBlock Classes="update" Text="{Binding UpdateText}" IsVisible="{Binding UpdateText, Converter={x:Static ObjectConverters.IsNotNull}}" />
+                <TextBlock Classes="muted" FontSize="11" Text="{Binding NotInCatalogText}"
+                           IsVisible="{Binding NotInCatalogText, Converter={x:Static ObjectConverters.IsNotNull}}" />
+              </StackPanel>
+            </Grid>
+          </DataTemplate>
+        </ListBox.ItemTemplate>
+      </ListBox>
+      <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="8">
+        <ProgressBar IsIndeterminate="True" Width="160" IsVisible="{Binding IsLoading}" />
+        <TextBlock Classes="muted" Text="{x:Static r:Strings.Inst_Loading}" IsVisible="{Binding IsLoading}" HorizontalAlignment="Center" />
+        <TextBlock x:Name="InstalledMessage" Classes="muted" Text="{Binding Message}" TextWrapping="Wrap" MaxWidth="520" TextAlignment="Center"
+                   IsVisible="{Binding Message, Converter={x:Static ObjectConverters.IsNotNull}}" />
+      </StackPanel>
+    </Panel>
+  </DockPanel>
+</UserControl>

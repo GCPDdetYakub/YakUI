@@ -1,0 +1,47 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:YakUI.App.ViewModels"
+             xmlns:r="using:YakUI.App.Resources"
+             x:Class="YakUI.App.Views.FirstRunView"
+             x:DataType="vm:FirstRunViewModel">
+
+  <DockPanel Margin="20" MaxWidth="720">
+    <StackPanel DockPanel.Dock="Top" Spacing="6" Margin="0,0,0,12">
+      <TextBlock Text="{x:Static r:Strings.Wiz_Title}" FontSize="18" FontWeight="SemiBold" />
+      <TextBlock Classes="muted" Text="{x:Static r:Strings.Wiz_Intro}" TextWrapping="Wrap" />
+    </StackPanel>
+
+    <StackPanel DockPanel.Dock="Bottom" Spacing="8" Margin="0,12,0,0">
+      <TextBlock x:Name="WizardStatus" Text="{Binding Status}" FontSize="12" TextWrapping="Wrap"
+                 IsVisible="{Binding Status, Converter={x:Static ObjectConverters.IsNotNull}}" />
+      <StackPanel Orientation="Horizontal" Spacing="8" HorizontalAlignment="Right">
+        <ProgressBar IsIndeterminate="True" Width="80" MinWidth="80" IsVisible="{Binding IsBusy}" VerticalAlignment="Center" />
+        <Button x:Name="WizardFinish" Classes="accent" Content="{x:Static r:Strings.Wiz_Finish}" Command="{Binding FinishCommand}" />
+        <Button x:Name="WizardSkip" Content="{x:Static r:Strings.Wiz_Skip}" Command="{Binding SkipCommand}" />
+      </StackPanel>
+    </StackPanel>
+
+    <ScrollViewer>
+      <StackPanel Spacing="10">
+        <TextBlock Classes="muted" Text="{x:Static r:Strings.Wiz_NoRhino}" IsVisible="{Binding NoRhino}" TextWrapping="Wrap" />
+        <ItemsControl x:Name="WizardRows" ItemsSource="{Binding Rows}">
+          <ItemsControl.ItemTemplate>
+            <DataTemplate x:DataType="vm:FirstRunRowViewModel">
+              <Border BorderBrush="{DynamicResource DividerBrush}" BorderThickness="1" CornerRadius="6" Padding="12" Margin="0,0,0,8">
+                <StackPanel Spacing="4">
+                  <TextBlock Text="{Binding Title}" FontWeight="SemiBold" />
+                  <TextBlock Text="{Binding YakText}" FontSize="12" TextWrapping="Wrap" />
+                  <CheckBox IsVisible="{Binding HasAvailable}" IsChecked="{Binding Download}">
+                    <TextBlock Text="{Binding AvailableText}" FontSize="12" TextWrapping="Wrap" />
+                  </CheckBox>
+                  <TextBlock FontSize="12" Text="{Binding NoYakText}" TextWrapping="Wrap" Foreground="{DynamicResource StatusBackwardFg}"
+                             IsVisible="{Binding NoYakText, Converter={x:Static ObjectConverters.IsNotNull}}" />
+                </StackPanel>
+              </Border>
+            </DataTemplate>
+          </ItemsControl.ItemTemplate>
+        </ItemsControl>
+      </StackPanel>
+    </ScrollViewer>
+  </DockPanel>
+</UserControl>

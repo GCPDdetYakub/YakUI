@@ -1,0 +1,165 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:YakUI.App.ViewModels"
+        xmlns:svc="using:YakUI.App.Services"
+        xmlns:r="using:YakUI.App.Resources"
+        xmlns:v="using:YakUI.App.Views"
+        x:Class="YakUI.App.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Title="{x:Static r:Strings.AppTitle}"
+        Width="1200" Height="760" MinWidth="900" MinHeight="560"
+        WindowStartupLocation="CenterScreen">
+
+  <DockPanel>
+
+    <!-- Заголовок: выпадающий список Rhino (FR-81, 14.1). Настройки — в левой панели. -->
+    <Border DockPanel.Dock="Top" Background="{DynamicResource HeaderBackground}"
+            BorderBrush="{DynamicResource DividerBrush}" BorderThickness="0,0,0,1" Padding="16,10">
+      <Grid ColumnDefinitions="Auto,Auto,Auto,Auto,Auto,*,Auto">
+        <TextBlock Grid.Column="0" Text="{x:Static r:Strings.AppTitle}" FontSize="18" FontWeight="SemiBold"
+                   VerticalAlignment="Center" Margin="0,0,24,0" />
+
+        <TextBlock Grid.Column="1" Text="{x:Static r:Strings.Target_Label}" VerticalAlignment="Center" Margin="0,0,8,0" />
+        <ComboBox Grid.Column="2" x:Name="TargetCombo" MinWidth="420" MaxDropDownHeight="520"
+                  ItemsSource="{Binding Target.Items}"
+                  SelectedItem="{Binding Target.SelectedItem}">
+          <ComboBox.Styles>
+            <!-- FR-81g: предварительные выпуски выделяются цветом. -->
+            <Style Selector="TextBlock.prerelease">
+              <Setter Property="Foreground" Value="{DynamicResource StatusBackwardFg}" />
+              <Setter Property="FontWeight" Value="SemiBold" />
+            </Style>
+            <Style Selector="ComboBoxItem" x:DataType="vm:TargetListItem">
+              <Setter Property="IsEnabled" Value="{Binding IsSelectable}" />
+              <Setter Property="ToolTip.Tip" Value="{Binding Tooltip}" />
+            </Style>
+          </ComboBox.Styles>
+          <ComboBox.ItemTemplate>
+            <DataTemplate x:DataType="vm:TargetListItem">
+              <Panel>
+                <TextBlock Classes="groupHeader" Text="{Binding Title}" IsVisible="{Binding IsHeader}" Margin="0,4,0,0" />
+                <Separator IsVisible="{Binding IsSeparator}" Margin="0,2" />
+                <StackPanel IsVisible="{Binding IsSelectable}" Spacing="1">
+                  <TextBlock Text="{Binding Title}" Classes.prerelease="{Binding IsPrerelease}" />
+                  <TextBlock Classes="muted" FontSize="11" Text="{Binding Subtitle}"
+                             IsVisible="{Binding Subtitle, Converter={x:Static ObjectConverters.IsNotNull}}" />
+                </StackPanel>
+              </Panel>
+            </DataTemplate>
+          </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <!-- Сервис-релиз — только для неустановленной версии (FR-81c). -->
+        <TextBlock Grid.Column="3" Text="{x:Static r:Strings.Target_ServiceRelease}" VerticalAlignment="Center"
+                   Margin="16,0,8,0" IsVisible="{Binding Target.IsServiceReleaseVisible}" />
+        <ComboBox Grid.Column="4" x:Name="ServiceReleaseCombo" MinWidth="150"
+                  IsVisible="{Binding Target.IsServiceReleaseVisible}"
+                  ItemsSource="{Binding Target.ServiceReleases}"
+                  SelectedItem="{Binding Target.SelectedServiceRelease}">
+          <ComboBox.ItemTemplate>
+            <DataTemplate x:DataType="vm:ServiceReleaseOption">
+              <TextBlock Text="{Binding Title}" />
+            </DataTemplate>
+          </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <TextBlock Grid.Column="5" Classes="muted" Text="{Binding Target.FilterText}" VerticalAlignment="Center"
+                   Margin="16,0" TextTrimming="CharacterEllipsis" />
+
+        <!-- «Открыть hosts» и индикатор контрольных строк (FR-86, FR-89c). -->
+        <StackPanel Grid.Column="6" Orientation="Horizontal" Spacing="10" VerticalAlignment="Center" IsVisible="{Binding Hosts, Converter={x:Static ObjectConverters.IsNotNull}}">
+          <TextBlock x:Name="HostsIndicator" Classes="muted" VerticalAlignment="Center"
+                     Text="{Binding Hosts.IndicatorText, FallbackValue=''}" IsVisible="{Binding Hosts.IsIndicatorVisible, FallbackValue=False}"
+                     ToolTip.Tip="{Binding Hosts.IndicatorTooltip, FallbackValue=''}" />
+          <Button x:Name="OpenHostsButton" Content="{x:Static r:Strings.Hosts_Open}" Command="{Binding Hosts.OpenHostsCommand, FallbackValue={x:Null}}"
+                  ToolTip.Tip="{x:Static r:Strings.Hosts_OpenTip}" />
+        </StackPanel>
+
+      </Grid>
+    </Border>
+
+    <!-- Строка фоновых операций (FR-84). -->
+    <Border DockPanel.Dock="Bottom" BorderBrush="{DynamicResource DividerBrush}" BorderThickness="0,1,0,0" Padding="16,6">
+      <Grid ColumnDefinitions="*,Auto">
+      <!-- Справа: состояние кэша каталога (FR-21, FR-29) и ссылка Food4Rhino (FR-100). -->
+      <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="12" VerticalAlignment="Center" Margin="16,0,0,0">
+        <ProgressBar IsIndeterminate="True" Width="40" MinWidth="40" IsVisible="{Binding CatalogStatus.IsBusy}" />
+        <TextBlock x:Name="CatalogStatusText" Classes="muted" Text="{Binding CatalogStatus.Text}" VerticalAlignment="Center" />
+        <Button x:Name="Food4RhinoLink" Classes="link" Command="{Binding OpenFood4RhinoCommand}" ToolTip.Tip="{x:Static r:Strings.Status_Food4RhinoTip}">
+          <TextBlock Text="Food4Rhino" TextDecorations="Underline" />
+        </Button>
+      </StackPanel>
+      <Panel Grid.Column="0">
+        <TextBlock Classes="muted" Text="{x:Static r:Strings.Status_Ready}" IsVisible="{Binding !Operations.Items.Count}" />
+        <ItemsControl ItemsSource="{Binding Operations.Items}">
+          <ItemsControl.ItemTemplate>
+            <DataTemplate x:DataType="svc:BackgroundOperation">
+              <Grid ColumnDefinitions="Auto,160,*,Auto,Auto" Margin="0,2">
+                <TextBlock Grid.Column="0" Text="{Binding Title}" VerticalAlignment="Center" Margin="0,0,12,0" />
+                <ProgressBar Grid.Column="1" IsIndeterminate="{Binding IsIndeterminate}" Value="{Binding Progress}"
+                             IsVisible="{Binding IsRunning}" VerticalAlignment="Center" />
+                <TextBlock Grid.Column="2" Classes="muted" Text="{Binding Detail}" VerticalAlignment="Center"
+                           Margin="12,0" TextTrimming="CharacterEllipsis" />
+                <Button Grid.Column="3" Content="{x:Static r:Strings.Status_Cancel}" Command="{Binding CancelCommand}"
+                        IsVisible="{Binding IsRunning}" IsEnabled="{Binding CanCancel}" Padding="8,2" />
+                <Button Grid.Column="4" Content="{x:Static r:Strings.Status_Dismiss}" Command="{Binding DismissCommand}"
+                        IsVisible="{Binding IsFinishedWithMessage}" Padding="8,2" />
+              </Grid>
+            </DataTemplate>
+          </ItemsControl.ItemTemplate>
+        </ItemsControl>
+      </Panel>
+      </Grid>
+    </Border>
+
+    <!-- Навигация по экранам (FR-80). -->
+    <Border DockPanel.Dock="Left" Width="200" Background="{DynamicResource NavBackground}"
+            BorderBrush="{DynamicResource DividerBrush}" BorderThickness="0,0,1,0">
+      <ListBox x:Name="Navigation" ItemsSource="{Binding Screens}" SelectedItem="{Binding SelectedScreen}"
+               Background="Transparent" Margin="0,8">
+        <ListBox.ItemTemplate>
+          <DataTemplate x:DataType="vm:ScreenViewModel">
+            <TextBlock Text="{Binding Title}" Margin="8,4" />
+          </DataTemplate>
+        </ListBox.ItemTemplate>
+      </ListBox>
+    </Border>
+
+    <!-- Текущий экран. -->
+    <ContentControl Content="{Binding SelectedScreen}" Margin="24,20">
+      <ContentControl.DataTemplates>
+        <DataTemplate DataType="vm:CatalogViewModel">
+          <v:CatalogView />
+        </DataTemplate>
+        <DataTemplate DataType="vm:InstalledViewModel">
+          <v:InstalledView />
+        </DataTemplate>
+        <DataTemplate DataType="vm:DownloadsViewModel">
+          <v:DownloadsView />
+        </DataTemplate>
+        <DataTemplate DataType="vm:JournalViewModel">
+          <v:JournalView />
+        </DataTemplate>
+        <DataTemplate DataType="vm:SettingsViewModel">
+          <v:SettingsView />
+        </DataTemplate>
+        <DataTemplate DataType="vm:PlaceholderScreenViewModel">
+          <StackPanel Spacing="12">
+            <TextBlock Classes="screenTitle" Text="{Binding Title}" />
+            <TextBlock Classes="muted" Text="{Binding Message}" />
+            <Border IsVisible="{Binding ShowsTarget}" BorderBrush="{DynamicResource DividerBrush}" BorderThickness="1"
+                    CornerRadius="6" Padding="14" Margin="0,8,0,0" HorizontalAlignment="Left" MinWidth="460">
+              <StackPanel Spacing="6">
+                <TextBlock Classes="groupHeader" Text="{x:Static r:Strings.Placeholder_CurrentTarget}" />
+                <TextBlock Text="{Binding Target.SelectedItem.Title, FallbackValue=''}" FontWeight="SemiBold" />
+                <TextBlock Text="{Binding Target.FilterText}" />
+                <TextBlock Classes="muted" Text="{Binding Target.CapabilitiesText}" TextWrapping="Wrap" MaxWidth="560" />
+              </StackPanel>
+            </Border>
+          </StackPanel>
+        </DataTemplate>
+      </ContentControl.DataTemplates>
+    </ContentControl>
+
+  </DockPanel>
+</Window>

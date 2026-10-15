@@ -1,0 +1,94 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+  <Styles.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Light">
+          <SolidColorBrush x:Key="HeaderBackground" Color="#F3F3F3" />
+          <SolidColorBrush x:Key="NavBackground" Color="#FAFAFA" />
+          <SolidColorBrush x:Key="DividerBrush" Color="#E0E0E0" />
+          <SolidColorBrush x:Key="MutedText" Color="#666666" />
+          <SolidColorBrush x:Key="StatusNativeBg" Color="#DFF3E4" />
+          <SolidColorBrush x:Key="StatusNativeFg" Color="#1E6B34" />
+          <SolidColorBrush x:Key="StatusBackwardBg" Color="#FFF1D6" />
+          <SolidColorBrush x:Key="StatusBackwardFg" Color="#8A5300" />
+          <SolidColorBrush x:Key="AccentLinkFg" Color="#0B5CAD" />
+          <SolidColorBrush x:Key="StatusUnrestrictedBg" Color="#E3EDFB" />
+          <SolidColorBrush x:Key="StatusUnrestrictedFg" Color="#1F4E8C" />
+          <SolidColorBrush x:Key="StatusIncompatibleBg" Color="#FBE3E3" />
+          <SolidColorBrush x:Key="StatusIncompatibleFg" Color="#9B1C1C" />
+          <SolidColorBrush x:Key="StatusNeutralBg" Color="#ECECEC" />
+          <SolidColorBrush x:Key="StatusNeutralFg" Color="#555555" />
+          <SolidColorBrush x:Key="UpdateFg" Color="#1F4E8C" />
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="Dark">
+          <SolidColorBrush x:Key="HeaderBackground" Color="#202020" />
+          <SolidColorBrush x:Key="NavBackground" Color="#1B1B1B" />
+          <SolidColorBrush x:Key="DividerBrush" Color="#3A3A3A" />
+          <SolidColorBrush x:Key="MutedText" Color="#A0A0A0" />
+          <SolidColorBrush x:Key="StatusNativeBg" Color="#1E3B27" />
+          <SolidColorBrush x:Key="StatusNativeFg" Color="#8FDCA5" />
+          <SolidColorBrush x:Key="StatusBackwardBg" Color="#43330F" />
+          <SolidColorBrush x:Key="StatusBackwardFg" Color="#F2C46D" />
+          <SolidColorBrush x:Key="AccentLinkFg" Color="#7DB8FF" />
+          <SolidColorBrush x:Key="StatusUnrestrictedBg" Color="#1C2D46" />
+          <SolidColorBrush x:Key="StatusUnrestrictedFg" Color="#9CC2F5" />
+          <SolidColorBrush x:Key="StatusIncompatibleBg" Color="#4A1F1F" />
+          <SolidColorBrush x:Key="StatusIncompatibleFg" Color="#F2A0A0" />
+          <SolidColorBrush x:Key="StatusNeutralBg" Color="#333333" />
+          <SolidColorBrush x:Key="StatusNeutralFg" Color="#C0C0C0" />
+          <SolidColorBrush x:Key="UpdateFg" Color="#9CC2F5" />
+        </ResourceDictionary>
+      </ResourceDictionary.ThemeDictionaries>
+    </ResourceDictionary>
+  </Styles.Resources>
+
+  <Style Selector=":is(TextBlock).muted">
+    <Setter Property="Foreground" Value="{DynamicResource MutedText}" />
+  </Style>
+  <Style Selector=":is(TextBlock).groupHeader">
+    <Setter Property="FontWeight" Value="SemiBold" />
+    <Setter Property="FontSize" Value="12" />
+    <Setter Property="Foreground" Value="{DynamicResource MutedText}" />
+  </Style>
+  <Style Selector=":is(TextBlock).screenTitle">
+    <Setter Property="FontSize" Value="22" />
+    <Setter Property="FontWeight" Value="SemiBold" />
+  </Style>
+  <!-- Пометки статусов совместимости (FR-22). -->
+  <Style Selector="Border.badge">
+    <Setter Property="CornerRadius" Value="4" />
+    <Setter Property="Padding" Value="6,1" />
+    <Setter Property="Background" Value="{DynamicResource StatusNeutralBg}" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+  </Style>
+  <Style Selector="Border.badge > TextBlock">
+    <Setter Property="FontSize" Value="11" />
+    <Setter Property="Foreground" Value="{DynamicResource StatusNeutralFg}" />
+  </Style>
+  <Style Selector="Border.badge.native"><Setter Property="Background" Value="{DynamicResource StatusNativeBg}" /></Style>
+  <Style Selector="Border.badge.native > TextBlock"><Setter Property="Foreground" Value="{DynamicResource StatusNativeFg}" /></Style>
+  <Style Selector="Border.badge.backward"><Setter Property="Background" Value="{DynamicResource StatusBackwardBg}" /></Style>
+  <Style Selector="Border.badge.backward > TextBlock"><Setter Property="Foreground" Value="{DynamicResource StatusBackwardFg}" /></Style>
+  <Style Selector="Border.badge.unrestricted"><Setter Property="Background" Value="{DynamicResource StatusUnrestrictedBg}" /></Style>
+  <Style Selector="Border.badge.unrestricted > TextBlock"><Setter Property="Foreground" Value="{DynamicResource StatusUnrestrictedFg}" /></Style>
+  <Style Selector="Border.badge.incompatible"><Setter Property="Background" Value="{DynamicResource StatusIncompatibleBg}" /></Style>
+  <Style Selector="Border.badge.incompatible > TextBlock"><Setter Property="Foreground" Value="{DynamicResource StatusIncompatibleFg}" /></Style>
+  <Style Selector="Border.badge.pending > TextBlock"><Setter Property="FontStyle" Value="Italic" /></Style>
+  <Style Selector="Border.badge.prerelease > TextBlock"><Setter Property="Foreground" Value="{DynamicResource StatusBackwardFg}" /></Style>
+  <Style Selector=":is(TextBlock).update"><Setter Property="Foreground" Value="{DynamicResource UpdateFg}" /></Style>
+  <Style Selector="CheckBox.status"><Setter Property="Margin" Value="0,0,10,0" /></Style>
+  <Style Selector="WrapPanel > CheckBox"><Setter Property="Margin" Value="0,0,10,0" /></Style>
+  <!-- Кнопка-ссылка: подчёркнутый текст без рамки (Food4Rhino в строке состояния). -->
+  <Style Selector="Button.link">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="Padding" Value="0" />
+    <Setter Property="Foreground" Value="{DynamicResource AccentLinkFg}" />
+    <Setter Property="Cursor" Value="Hand" />
+  </Style>
+  <Style Selector="Button.link:pointerover /template/ ContentPresenter">
+    <Setter Property="Background" Value="Transparent" />
+  </Style>
+</Styles>

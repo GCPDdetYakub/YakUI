@@ -1,0 +1,69 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:YakUI.App.ViewModels"
+             xmlns:r="using:YakUI.App.Resources"
+             x:Class="YakUI.App.Views.JournalView"
+             x:DataType="vm:JournalViewModel">
+
+  <UserControl.Styles>
+    <Style Selector="TextBlock.head">
+      <Setter Property="FontWeight" Value="SemiBold" />
+      <Setter Property="FontSize" Value="12" />
+      <Setter Property="Foreground" Value="{DynamicResource MutedText}" />
+    </Style>
+    <Style Selector="TextBlock.error">
+      <Setter Property="Foreground" Value="{DynamicResource StatusIncompatibleFg}" />
+    </Style>
+  </UserControl.Styles>
+
+  <DockPanel>
+    <!-- Фильтр: вид операции, текст, только ошибки (FR-90). -->
+    <Grid DockPanel.Dock="Top" ColumnDefinitions="180,300,Auto,*,Auto,Auto" Margin="0,0,0,10">
+      <ComboBox Grid.Column="0" x:Name="KindCombo" ItemsSource="{Binding Kinds}" SelectedItem="{Binding SelectedKind}" HorizontalAlignment="Stretch" />
+      <TextBox Grid.Column="1" x:Name="JournalFilter" Text="{Binding FilterText}" Watermark="{x:Static r:Strings.Jr_Filter}" Margin="8,0,0,0" />
+      <CheckBox Grid.Column="2" Content="{x:Static r:Strings.Jr_OnlyErrors}" IsChecked="{Binding OnlyErrors}" Margin="12,0,0,0" />
+      <TextBlock Grid.Column="3" Classes="muted" Text="{Binding CountText}" VerticalAlignment="Center" Margin="16,0" />
+      <Button Grid.Column="4" x:Name="JournalRefresh" Content="{x:Static r:Strings.Inst_Refresh}" Command="{Binding RefreshCommand}" Margin="0,0,8,0" />
+      <Button Grid.Column="5" Content="{x:Static r:Strings.Jr_OpenLogs}" Command="{Binding OpenLogsCommand}" />
+    </Grid>
+
+    <TextBlock DockPanel.Dock="Top" Classes="muted" Text="{Binding Message}" Margin="0,0,0,8"
+               IsVisible="{Binding Message, Converter={x:Static ObjectConverters.IsNotNull}}" />
+
+    <!-- Подробности выбранной записи: аргументы и вывод yak (FR-16). -->
+    <Border DockPanel.Dock="Bottom" Height="230" BorderBrush="{DynamicResource DividerBrush}" BorderThickness="1" CornerRadius="6" Margin="0,10,0,0">
+      <Panel>
+        <TextBox x:Name="JournalDetails" Text="{Binding SelectedRow.DetailsText, FallbackValue=''}" IsReadOnly="True" AcceptsReturn="True"
+                 TextWrapping="NoWrap" FontFamily="Consolas, Cascadia Mono, monospace" FontSize="12" BorderThickness="0"
+                 ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" />
+        <TextBlock Classes="muted" Text="{x:Static r:Strings.Jr_SelectHint}" HorizontalAlignment="Center" VerticalAlignment="Center"
+                   IsVisible="{Binding SelectedRow, Converter={x:Static ObjectConverters.IsNull}}" />
+      </Panel>
+    </Border>
+
+    <Grid DockPanel.Dock="Top" ColumnDefinitions="150,110,*,140,60,80" Margin="8,0,8,4">
+      <TextBlock Grid.Column="0" Classes="head" Text="{x:Static r:Strings.Jr_ColTime}" />
+      <TextBlock Grid.Column="1" Classes="head" Text="{x:Static r:Strings.Jr_ColKind}" />
+      <TextBlock Grid.Column="2" Classes="head" Text="{x:Static r:Strings.Jr_ColAction}" />
+      <TextBlock Grid.Column="3" Classes="head" Text="{x:Static r:Strings.Jr_ColResult}" />
+      <TextBlock Grid.Column="4" Classes="head" Text="{x:Static r:Strings.Jr_ColCode}" />
+      <TextBlock Grid.Column="5" Classes="head" Text="{x:Static r:Strings.Jr_ColDuration}" />
+    </Grid>
+
+    <ListBox x:Name="JournalList" ItemsSource="{Binding Rows}" SelectedItem="{Binding SelectedRow}"
+             BorderBrush="{DynamicResource DividerBrush}" BorderThickness="1" CornerRadius="6">
+      <ListBox.ItemTemplate>
+        <DataTemplate x:DataType="vm:JournalRowViewModel">
+          <Grid ColumnDefinitions="150,110,*,140,60,80">
+            <TextBlock Grid.Column="0" Text="{Binding Time}" FontSize="12" />
+            <TextBlock Grid.Column="1" Text="{Binding Kind}" FontSize="12" />
+            <TextBlock Grid.Column="2" Text="{Binding Action}" FontSize="12" TextTrimming="CharacterEllipsis" ToolTip.Tip="{Binding Action}" />
+            <TextBlock Grid.Column="3" Text="{Binding Result}" FontSize="12" Classes.error="{Binding IsError}" />
+            <TextBlock Grid.Column="4" Text="{Binding CodeText}" FontSize="12" Classes.error="{Binding IsError}" />
+            <TextBlock Grid.Column="5" Text="{Binding DurationText}" FontSize="12" Classes="muted" />
+          </Grid>
+        </DataTemplate>
+      </ListBox.ItemTemplate>
+    </ListBox>
+  </DockPanel>
+</UserControl>

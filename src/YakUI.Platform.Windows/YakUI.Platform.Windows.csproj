@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Windows-реализация интерфейсов YakUI.Core.Platform (AD-08).
+    Отдельный проект с net8.0-windows: вызовы реестра и Win32 допустимы без подавления CA1416,
+    а будущая macOS-реализация станет соседним проектом без изменений ядра.
+  -->
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <RootNamespace>YakUI.Platform.Windows</RootNamespace>
+    <!-- Нужен генератору LibraryImport (WinVerifyTrust). -->
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\YakUI.Core\YakUI.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Та же версия, что использует Avalonia.Skia 11.3.22: без конфликта сборок в YakUI.App. -->
+    <PackageReference Include="SkiaSharp" Version="2.88.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="YakUI.Tests" />
+  </ItemGroup>
+
+</Project>

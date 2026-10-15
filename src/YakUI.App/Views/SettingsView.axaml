@@ -1,0 +1,232 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:YakUI.App.ViewModels"
+             xmlns:r="using:YakUI.App.Resources"
+             x:Class="YakUI.App.Views.SettingsView"
+             x:DataType="vm:SettingsViewModel">
+
+  <UserControl.Styles>
+    <Style Selector="TextBlock.section">
+      <Setter Property="FontWeight" Value="SemiBold" />
+      <Setter Property="FontSize" Value="15" />
+      <Setter Property="Margin" Value="0,0,0,8" />
+    </Style>
+    <Style Selector="Border.card">
+      <Setter Property="BorderBrush" Value="{DynamicResource DividerBrush}" />
+      <Setter Property="BorderThickness" Value="1" />
+      <Setter Property="CornerRadius" Value="6" />
+      <Setter Property="Padding" Value="14" />
+      <Setter Property="Margin" Value="0,0,0,16" />
+    </Style>
+    <Style Selector="TextBlock.problem">
+      <Setter Property="Foreground" Value="{DynamicResource StatusIncompatibleFg}" />
+    </Style>
+    <Style Selector="TextBlock.chosen">
+      <Setter Property="Foreground" Value="{DynamicResource StatusNativeFg}" />
+      <Setter Property="FontWeight" Value="SemiBold" />
+    </Style>
+  </UserControl.Styles>
+
+  <ScrollViewer HorizontalScrollBarVisibility="Disabled">
+    <StackPanel MaxWidth="1000" HorizontalAlignment="Left">
+
+      <!-- Тема оформления (FR-83). -->
+      <Border Classes="card">
+        <StackPanel>
+          <TextBlock Classes="section" Text="{x:Static r:Strings.Set_Theme}" />
+          <ComboBox x:Name="ThemeCombo" ItemsSource="{Binding Themes}" SelectedItem="{Binding SelectedTheme}" MinWidth="260">
+            <ComboBox.ItemTemplate>
+              <DataTemplate x:DataType="vm:ThemeOption">
+                <TextBlock Text="{Binding Title}" />
+              </DataTemplate>
+            </ComboBox.ItemTemplate>
+          </ComboBox>
+          <TextBlock Classes="muted" FontSize="12" Text="{x:Static r:Strings.Set_ThemeHint}" Margin="0,6,0,0" TextWrapping="Wrap" />
+
+          <!-- Язык интерфейса (FR-82): RU / EN, применяется после перезапуска. -->
+          <TextBlock Classes="section" Text="{x:Static r:Strings.Set_Language}" Margin="0,16,0,0" />
+          <ComboBox x:Name="LanguageCombo" ItemsSource="{Binding Languages}" SelectedItem="{Binding SelectedLanguage}" MinWidth="260">
+            <ComboBox.ItemTemplate>
+              <DataTemplate x:DataType="vm:LanguageOption">
+                <TextBlock Text="{Binding Title}" />
+              </DataTemplate>
+            </ComboBox.ItemTemplate>
+          </ComboBox>
+          <TextBlock Classes="muted" FontSize="12" Text="{x:Static r:Strings.Set_LanguageHint}" Margin="0,6,0,0" TextWrapping="Wrap" />
+          <TextBlock Classes="update" FontSize="12" Text="{x:Static r:Strings.Set_LanguageRestart}" IsVisible="{Binding LanguageNeedsRestart}" Margin="0,4,0,0" TextWrapping="Wrap" />
+        </StackPanel>
+      </Border>
+
+      <!-- Файл hosts (14.2): редактор (FR-89) и контрольные строки (FR-89h). -->
+      <Border Classes="card" IsVisible="{Binding Hosts, Converter={x:Static ObjectConverters.IsNotNull}}">
+        <StackPanel Spacing="6">
+          <TextBlock Classes="section" Text="{x:Static r:Strings.Hosts_EditorSection}" />
+          <SelectableTextBlock Text="{Binding Hosts.EditorText, FallbackValue=''}" TextWrapping="Wrap" />
+          <StackPanel Orientation="Horizontal" Spacing="8">
+            <Button Content="{x:Static r:Strings.Hosts_EditorChange}" Command="{Binding Hosts.ChangeEditorCommand, FallbackValue={x:Null}}" />
+            <Button Content="{x:Static r:Strings.Hosts_EditorReset}" Command="{Binding Hosts.ResetEditorCommand, FallbackValue={x:Null}}" />
+          </StackPanel>
+          <TextBlock Classes="muted" FontSize="12" Text="{x:Static r:Strings.Hosts_EditorHint}" TextWrapping="Wrap" />
+
+          <TextBlock Classes="section" Text="{x:Static r:Strings.Hosts_ListSection}" Margin="0,12,0,0" />
+          <TextBlock Classes="muted" FontSize="12" Text="{x:Static r:Strings.Hosts_ListHint}" TextWrapping="Wrap" />
+          <ListBox x:Name="HostsWatchList" ItemsSource="{Binding Hosts.WatchList, FallbackValue={x:Null}}" SelectedItem="{Binding Hosts.SelectedLine, FallbackValue={x:Null}}"
+                   MinHeight="60" MaxHeight="180" BorderBrush="{DynamicResource DividerBrush}" BorderThickness="1" />
+          <StackPanel Orientation="Horizontal" Spacing="8">
+            <TextBox x:Name="HostsLineInput" Text="{Binding Hosts.LineInput, FallbackValue=''}" Watermark="{x:Static r:Strings.Hosts_LineWatermark}" MinWidth="280" />
+            <Button Content="{x:Static r:Strings.Hosts_Add}" Command="{Binding Hosts.AddLineCommand, FallbackValue={x:Null}}" />
+            <Button Content="{x:Static r:Strings.Hosts_Replace}" Command="{Binding Hosts.ReplaceLineCommand, FallbackValue={x:Null}}" />
+            <Button Content="{x:Static r:Strings.Hosts_Remove}" Command="{Binding Hosts.RemoveLineCommand, FallbackValue={x:Null}}" />
+            <Button Content="{x:Static r:Strings.Hosts_Up}" Command="{Binding Hosts.MoveUpCommand, FallbackValue={x:Null}}" />
+            <Button Content="{x:Static r:Strings.Hosts_Down}" Command="{Binding Hosts.MoveDownCommand, FallbackValue={x:Null}}" />
+          </StackPanel>
+          <TextBlock Classes="update" FontSize="12" Text="{Binding Hosts.LineError, FallbackValue=''}" TextWrapping="Wrap"
+                     IsVisible="{Binding Hosts.LineError, Converter={x:Static ObjectConverters.IsNotNull}, FallbackValue=False}" />
+        </StackPanel>
+      </Border>
+
+      <!-- Папка загрузок (FR-35). -->
+      <Border Classes="card">
+        <StackPanel Spacing="8">
+          <TextBlock Classes="section" Text="{x:Static r:Strings.Set_Downloads}" />
+          <StackPanel Orientation="Horizontal" Spacing="8">
+            <TextBlock x:Name="DownloadsPath" Text="{Binding DownloadsDirectory}" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" MaxWidth="600" />
+            <TextBlock Classes="muted" Text="{x:Static r:Strings.Set_DownloadsDefault}" VerticalAlignment="Center" IsVisible="{Binding IsDefaultDownloads}" />
+          </StackPanel>
+          <StackPanel Orientation="Horizontal" Spacing="8">
+            <Button x:Name="ChangeDownloadsButton" Content="{x:Static r:Strings.Set_Change}" Command="{Binding ChangeDownloadsCommand}" />
+            <Button Content="{x:Static r:Strings.Set_Reset}" Command="{Binding ResetDownloadsCommand}" IsEnabled="{Binding !IsDefaultDownloads}" />
+            <Button Content="{x:Static r:Strings.Dl_OpenFolder}" Command="{Binding OpenDownloadsCommand}" />
+          </StackPanel>
+          <TextBlock Classes="muted" FontSize="12" Text="{x:Static r:Strings.Set_DownloadsHint}" TextWrapping="Wrap" />
+          <TextBlock Text="{Binding DownloadsMessage}" FontSize="12" TextWrapping="Wrap"
+                     IsVisible="{Binding DownloadsMessage, Converter={x:Static ObjectConverters.IsNotNull}}" />
+        </StackPanel>
+      </Border>
+
+      <!-- Пользовательские папки (FR-41). -->
+      <Border Classes="card">
+        <StackPanel Spacing="8">
+          <TextBlock Classes="section" Text="{x:Static r:Strings.Set_Roots}" />
+          <TextBlock Classes="muted" FontSize="12" Text="{x:Static r:Strings.Set_RootsHint}" TextWrapping="Wrap" />
+          <ListBox x:Name="RootsList" ItemsSource="{Binding Roots}" SelectedItem="{Binding SelectedRootRow}"
+                   BorderBrush="{DynamicResource DividerBrush}" BorderThickness="1" CornerRadius="6" MinHeight="40">
+            <ListBox.ItemTemplate>
+              <DataTemplate x:DataType="vm:CustomRootRowViewModel">
+                <Grid ColumnDefinitions="200,*">
+                  <TextBox Grid.Column="0" Text="{Binding Name}" Margin="0,0,12,0" />
+                  <TextBlock Grid.Column="1" Text="{Binding Path}" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" ToolTip.Tip="{Binding Path}" />
+                </Grid>
+              </DataTemplate>
+            </ListBox.ItemTemplate>
+          </ListBox>
+          <StackPanel Orientation="Horizontal" Spacing="8">
+            <Button x:Name="AddRootButton" Content="{x:Static r:Strings.Set_RootAdd}" Command="{Binding AddRootCommand}" />
+            <Button Content="{x:Static r:Strings.Set_RootRemove}" Command="{Binding RemoveRootCommand}" />
+          </StackPanel>
+          <TextBlock Text="{Binding RootsMessage}" FontSize="12" TextWrapping="Wrap"
+                     IsVisible="{Binding RootsMessage, Converter={x:Static ObjectConverters.IsNotNull}}" />
+        </StackPanel>
+      </Border>
+
+      <!-- Сеть: прокси (FR-95…FR-95b). -->
+      <Border Classes="card">
+        <StackPanel Spacing="8">
+          <TextBlock Classes="section" Text="{x:Static r:Strings.Net_Title}" />
+          <ComboBox x:Name="ProxyModeCombo" ItemsSource="{Binding ProxyModes}" SelectedItem="{Binding SelectedProxyMode}" MinWidth="260">
+            <ComboBox.ItemTemplate>
+              <DataTemplate x:DataType="vm:ProxyModeOption">
+                <TextBlock Text="{Binding Title}" />
+              </DataTemplate>
+            </ComboBox.ItemTemplate>
+          </ComboBox>
+          <StackPanel Orientation="Horizontal" Spacing="8" IsVisible="{Binding IsManualProxy}">
+            <ComboBox x:Name="ProxyKindCombo" ItemsSource="{Binding ProxyKinds}" SelectedItem="{Binding SelectedProxyKind}" MinWidth="110">
+              <ComboBox.ItemTemplate>
+                <DataTemplate x:DataType="vm:ProxyKindOption">
+                  <TextBlock Text="{Binding Title}" />
+                </DataTemplate>
+              </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBox x:Name="ProxyAddressBox" Text="{Binding ProxyAddress}" Watermark="127.0.0.1:2080" MinWidth="260" />
+          </StackPanel>
+          <StackPanel Orientation="Horizontal" Spacing="8">
+            <Button x:Name="ApplyProxyButton" Content="{x:Static r:Strings.Net_Apply}" Command="{Binding ApplyProxyCommand}" />
+            <Button x:Name="CheckConnectionButton" Content="{x:Static r:Strings.Net_Check}" Command="{Binding CheckConnectionCommand}" />
+            <ProgressBar IsIndeterminate="True" Width="60" MinWidth="60" IsVisible="{Binding IsCheckingConnection}" VerticalAlignment="Center" />
+          </StackPanel>
+          <TextBlock Text="{Binding ProxyMessage}" FontSize="12" TextWrapping="Wrap"
+                     IsVisible="{Binding ProxyMessage, Converter={x:Static ObjectConverters.IsNotNull}}" />
+          <TextBlock x:Name="ConnectionResult" Text="{Binding ConnectionText}" FontSize="12" TextWrapping="Wrap"
+                     Classes.chosen="{Binding ConnectionOk}" Classes.problem="{Binding !ConnectionOk}"
+                     IsVisible="{Binding ConnectionText, Converter={x:Static ObjectConverters.IsNotNull}}" />
+          <TextBlock Classes="muted" FontSize="12" Text="{x:Static r:Strings.Net_Hint}" TextWrapping="Wrap" />
+        </StackPanel>
+      </Border>
+
+      <!-- yak-инструменты по версиям Rhino (FR-13, FR-17). -->
+      <Border Classes="card">
+        <StackPanel Spacing="8">
+          <TextBlock Classes="section" Text="{x:Static r:Strings.Set_Yak}" />
+          <TextBlock Classes="muted" FontSize="12" Text="{x:Static r:Strings.Set_YakHint}" TextWrapping="Wrap" />
+          <WrapPanel>
+            <Button x:Name="PinButton" Content="{x:Static r:Strings.Set_YakPin}" Command="{Binding PinCommand}" Margin="0,0,8,6" />
+            <Button Content="{x:Static r:Strings.Set_YakUnpin}" Command="{Binding UnpinCommand}" Margin="0,0,8,6" />
+            <Button x:Name="AddYakButton" Content="{x:Static r:Strings.Set_YakAdd}" Command="{Binding AddManualCommand}" Margin="0,0,8,6" />
+            <Button Content="{x:Static r:Strings.Set_YakRemove}" Command="{Binding RemoveManualCommand}" Margin="0,0,8,6" />
+            <Button Content="{x:Static r:Strings.Set_YakConfirm}" Command="{Binding ConfirmUnsignedCommand}" Margin="0,0,8,6" />
+            <Button Content="{x:Static r:Strings.Set_YakOpenFolder}" Command="{Binding OpenToolFolderCommand}" Margin="0,0,8,6" />
+            <Button x:Name="RefreshYakButton" Content="{x:Static r:Strings.Set_YakRefresh}" Command="{Binding RefreshYakCommand}" Margin="0,0,8,6" />
+            <Button x:Name="CheckYakButton" Content="{x:Static r:Strings.Set_YakCheck}" Command="{Binding CheckYakUpdatesCommand}" Margin="0,0,8,6" />
+            <Button Content="{x:Static r:Strings.Set_OpenWizard}" Command="{Binding OpenWizardCommand}" Margin="0,0,8,6" />
+            <ProgressBar IsIndeterminate="True" Width="60" MinWidth="60" IsVisible="{Binding IsRefreshingYak}" VerticalAlignment="Center" />
+          </WrapPanel>
+          <StackPanel Orientation="Horizontal" Spacing="8">
+            <TextBox x:Name="YakVersionBox" Text="{Binding YakVersionToDownload}" Watermark="0.19.1" MinWidth="120" />
+            <Button x:Name="DownloadYakButton" Content="{x:Static r:Strings.Set_YakDownloadVersion}" Command="{Binding DownloadYakManualCommand}" />
+          </StackPanel>
+          <TextBlock Text="{Binding YakMessage}" FontSize="12" TextWrapping="Wrap"
+                     IsVisible="{Binding YakMessage, Converter={x:Static ObjectConverters.IsNotNull}}" />
+          <TextBlock x:Name="YakCheckText" Text="{Binding YakCheckText}" FontSize="12" TextWrapping="Wrap"
+                     IsVisible="{Binding YakCheckText, Converter={x:Static ObjectConverters.IsNotNull}}" />
+
+          <ItemsControl x:Name="YakGroupsList" ItemsSource="{Binding YakGroups}">
+            <ItemsControl.ItemTemplate>
+              <DataTemplate x:DataType="vm:YakGroupViewModel">
+                <StackPanel Margin="0,8,0,0" Spacing="4">
+                  <TextBlock Text="{Binding Title}" FontWeight="SemiBold" />
+                  <TextBlock Classes="muted" FontSize="12" Text="{Binding SelectedText}" TextWrapping="Wrap" />
+                  <StackPanel Orientation="Horizontal" Spacing="8" IsVisible="{Binding HasAvailable}">
+                    <TextBlock Classes="chosen" FontSize="12" Text="{Binding AvailableText}" VerticalAlignment="Center" />
+                    <Button Content="{x:Static r:Strings.Set_YakDownload}" FontSize="12"
+                            Command="{Binding $parent[UserControl].((vm:SettingsViewModel)DataContext).DownloadAvailableYakCommand}" CommandParameter="{Binding}" />
+                  </StackPanel>
+                  <Button Content="{x:Static r:Strings.Set_YakRestore}" FontSize="12" IsVisible="{Binding HasPrevious}" HorizontalAlignment="Left"
+                          Command="{Binding $parent[UserControl].((vm:SettingsViewModel)DataContext).RestorePreviousYakCommand}" CommandParameter="{Binding}" />
+                  <ListBox ItemsSource="{Binding Tools}"
+                           SelectedItem="{Binding $parent[UserControl].((vm:SettingsViewModel)DataContext).SelectedTool}"
+                           BorderBrush="{DynamicResource DividerBrush}" BorderThickness="1" CornerRadius="6">
+                    <ListBox.ItemTemplate>
+                      <DataTemplate x:DataType="vm:YakToolRowViewModel">
+                        <Grid ColumnDefinitions="80,110,*">
+                          <TextBlock Grid.Column="0" Text="{Binding VersionText}" Classes.chosen="{Binding IsSelected}" />
+                          <TextBlock Grid.Column="1" Classes="muted" Text="{Binding OriginText}" />
+                          <StackPanel Grid.Column="2" Spacing="1">
+                            <TextBlock Text="{Binding Path}" TextTrimming="CharacterEllipsis" ToolTip.Tip="{Binding Path}" />
+                            <TextBlock FontSize="12" Text="{Binding StatusText}" TextWrapping="Wrap"
+                                       Classes.problem="{Binding HasProblem}" Classes.chosen="{Binding IsSelected}" />
+                          </StackPanel>
+                        </Grid>
+                      </DataTemplate>
+                    </ListBox.ItemTemplate>
+                  </ListBox>
+                </StackPanel>
+              </DataTemplate>
+            </ItemsControl.ItemTemplate>
+          </ItemsControl>
+        </StackPanel>
+      </Border>
+
+    </StackPanel>
+  </ScrollViewer>
+</UserControl>

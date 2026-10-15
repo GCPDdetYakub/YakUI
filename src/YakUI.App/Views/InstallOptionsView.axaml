@@ -1,0 +1,81 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:YakUI.App.ViewModels"
+             xmlns:s="using:YakUI.Core.Settings"
+             xmlns:r="using:YakUI.App.Resources"
+             x:Class="YakUI.App.Views.InstallOptionsView"
+             x:DataType="vm:InstallOptionsViewModel">
+
+  <StackPanel Margin="20" Spacing="12" MaxWidth="640">
+    <TextBlock Text="{Binding Title}" FontSize="16" FontWeight="SemiBold" TextWrapping="Wrap" />
+
+    <!-- Режим (FR-40, FR-45). -->
+    <ListBox x:Name="ModeList" ItemsSource="{Binding Modes}" SelectedItem="{Binding SelectedMode}"
+             BorderBrush="{DynamicResource DividerBrush}" BorderThickness="1" CornerRadius="6">
+      <ListBox.ItemTemplate>
+        <DataTemplate x:DataType="vm:ModeOption">
+          <StackPanel Spacing="2" Margin="2,4">
+            <TextBlock Text="{Binding Title}" FontWeight="SemiBold" />
+            <TextBlock Classes="muted" FontSize="12" Text="{Binding Hint}" TextWrapping="Wrap" />
+          </StackPanel>
+        </DataTemplate>
+      </ListBox.ItemTemplate>
+    </ListBox>
+
+    <!-- Папка (FR-41; последняя для цели — по умолчанию, FR-40). -->
+    <StackPanel Spacing="6" IsVisible="{Binding NeedsRoot}">
+      <TextBlock Text="{x:Static r:Strings.Io_Folder}" FontWeight="SemiBold" />
+      <StackPanel Orientation="Horizontal" Spacing="8">
+        <ComboBox x:Name="RootCombo" ItemsSource="{Binding Roots}" SelectedItem="{Binding SelectedRoot}" MinWidth="420">
+          <ComboBox.ItemTemplate>
+            <DataTemplate x:DataType="s:CustomRoot">
+              <StackPanel Spacing="1">
+                <TextBlock Text="{Binding Name}" />
+                <TextBlock Classes="muted" FontSize="11" Text="{Binding Path}" />
+              </StackPanel>
+            </DataTemplate>
+          </ComboBox.ItemTemplate>
+        </ComboBox>
+        <Button Content="{x:Static r:Strings.Io_OtherFolder}" Command="{Binding PickFolderCommand}" />
+      </StackPanel>
+      <TextBlock Classes="muted" FontSize="12" Text="{x:Static r:Strings.Io_NoRoots}" TextWrapping="Wrap"
+                 IsVisible="{Binding !Roots.Count}" />
+    </StackPanel>
+
+    <!-- FR-43 (21.6): пакет с net48 и net7.0/net8.0 — рекомендуется стандартный профиль. -->
+    <TextBlock Classes="muted" FontSize="12" Text="{x:Static r:Strings.Io_MultiRuntimeHint}" TextWrapping="Wrap" IsVisible="{Binding RecommendStandard}" />
+
+    <!-- Среда для ссылки .ghlink (своя папка, пакет с несколькими сборками). -->
+    <StackPanel Spacing="6" IsVisible="{Binding ShowRuntime}">
+      <TextBlock Text="{x:Static r:Strings.Io_Runtime}" FontWeight="SemiBold" />
+      <ComboBox x:Name="RuntimeCombo" ItemsSource="{Binding RuntimeOptions}" SelectedItem="{Binding SelectedRuntime}" MinWidth="420">
+        <ComboBox.ItemTemplate>
+          <DataTemplate x:DataType="vm:RuntimeOption">
+            <TextBlock Text="{Binding Title}" />
+          </DataTemplate>
+        </ComboBox.ItemTemplate>
+      </ComboBox>
+    </StackPanel>
+
+    <!-- 13a: зависимости одиночного файла. -->
+    <CheckBox x:Name="IncludeDeps" IsVisible="{Binding HasDependencies}" IsChecked="{Binding IncludeDependencies}">
+      <TextBlock Text="{Binding DependenciesText}" TextWrapping="Wrap" />
+    </CheckBox>
+
+    <!-- Предупреждения FR-43 (21.6), FR-47. -->
+    <Border IsVisible="{Binding HasWarnings}" Background="{DynamicResource StatusBackwardBg}" CornerRadius="6" Padding="12,8">
+      <ItemsControl x:Name="WarningList" ItemsSource="{Binding Warnings}">
+        <ItemsControl.ItemTemplate>
+          <DataTemplate>
+            <TextBlock Text="{Binding}" Foreground="{DynamicResource StatusBackwardFg}" TextWrapping="Wrap" Margin="0,2" />
+          </DataTemplate>
+        </ItemsControl.ItemTemplate>
+      </ItemsControl>
+    </Border>
+
+    <StackPanel Orientation="Horizontal" Spacing="8" HorizontalAlignment="Right">
+      <Button x:Name="ConfirmInstall" Classes="accent" Content="{x:Static r:Strings.Card_Install}" Command="{Binding ConfirmCommand}" IsDefault="True" />
+      <Button Content="{x:Static r:Strings.Dlg_Cancel}" Command="{Binding CancelCommand}" IsCancel="True" />
+    </StackPanel>
+  </StackPanel>
+</UserControl>

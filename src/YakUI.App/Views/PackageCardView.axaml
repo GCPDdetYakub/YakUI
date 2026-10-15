@@ -1,0 +1,179 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:YakUI.App.ViewModels"
+             xmlns:r="using:YakUI.App.Resources"
+             xmlns:v="using:YakUI.App.Views"
+             x:Class="YakUI.App.Views.PackageCardView"
+             x:DataType="vm:PackageCardViewModel">
+
+  <UserControl.Styles>
+    <Style Selector=":is(TextBlock).section">
+      <Setter Property="FontWeight" Value="SemiBold" />
+      <Setter Property="Margin" Value="0,10,0,4" />
+    </Style>
+    <Style Selector=":is(TextBlock).label">
+      <Setter Property="Foreground" Value="{DynamicResource MutedText}" />
+      <Setter Property="Margin" Value="0,0,12,4" />
+    </Style>
+  </UserControl.Styles>
+
+  <ScrollViewer x:Name="CardScroll" HorizontalScrollBarVisibility="Disabled">
+    <StackPanel Spacing="6" Margin="0,0,8,0">
+
+      <!-- Заголовок: значок (заглушка FR-34a до шага 2.6), имя, авторы, статус. -->
+      <StackPanel Orientation="Horizontal" Spacing="12">
+        <v:PackageIconView x:Name="CardIcon" Width="48" Height="48" DataContext="{Binding Item.Icon}" />
+
+        <StackPanel VerticalAlignment="Center" MaxWidth="300">
+          <SelectableTextBlock Text="{Binding Item.Name}" FontSize="18" FontWeight="SemiBold" TextWrapping="Wrap" />
+          <SelectableTextBlock Classes="muted" Text="{Binding Item.Authors}" TextWrapping="Wrap" />
+        </StackPanel>
+      </StackPanel>
+
+      <StackPanel Orientation="Horizontal" Spacing="6">
+        <Border Classes="badge" Classes.native="{Binding Item.IsNative}" Classes.backward="{Binding Item.IsBackward}"
+                Classes.unrestricted="{Binding Item.IsUnrestricted}" Classes.incompatible="{Binding Item.IsIncompatible}"
+                Classes.unknown="{Binding Item.IsUnknown}" Classes.pending="{Binding Item.IsPending}"
+                IsVisible="{Binding Item.StatusText, Converter={x:Static ObjectConverters.IsNotNull}}">
+          <SelectableTextBlock Text="{Binding Item.StatusText}" />
+        </Border>
+        <Border Classes="badge mac" IsVisible="{Binding Item.IsMacOnly}">
+          <SelectableTextBlock Text="{x:Static r:Strings.Cat_MacOnlyBadge}" />
+        </Border>
+      </StackPanel>
+      <SelectableTextBlock Classes="muted" FontSize="12" Text="{x:Static r:Strings.Status_BackwardHint}" TextWrapping="Wrap" IsVisible="{Binding Item.IsBackward}" />
+
+      <SelectableTextBlock Text="{Binding Item.Entry.Package.Description}" TextWrapping="Wrap" Margin="0,4,0,0" />
+
+      <!-- Ссылки (FR-33). -->
+      <StackPanel Orientation="Horizontal" Spacing="12">
+        <Button x:Name="HomepageButton" Content="{x:Static r:Strings.Card_Homepage}" Command="{Binding OpenHomepageCommand}"
+                IsVisible="{Binding HasHomepage}" ToolTip.Tip="{Binding HomepageUrl}" Padding="10,3" />
+        <SelectableTextBlock Classes="muted" FontSize="12" Text="{x:Static r:Strings.Card_NoHomepage}" IsVisible="{Binding !HasHomepage}" VerticalAlignment="Center" />
+      </StackPanel>
+
+      <!-- Сведения (FR-30). -->
+      <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto" Margin="0,6,0,0">
+        <SelectableTextBlock Grid.Row="0" Classes="label" Text="{x:Static r:Strings.Card_Owners}" />
+        <SelectableTextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Owners}" TextWrapping="Wrap" />
+        <SelectableTextBlock Grid.Row="1" Classes="label" Text="{x:Static r:Strings.Card_Downloads}" />
+        <SelectableTextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Downloads}" TextWrapping="Wrap" />
+        <SelectableTextBlock Grid.Row="2" Classes="label" Text="{x:Static r:Strings.Cat_Updated}" />
+        <SelectableTextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Item.Entry.UpdatedAt, StringFormat={}{0:dd.MM.yyyy}}" />
+        <SelectableTextBlock Grid.Row="3" Classes="label" Text="{x:Static r:Strings.Cat_Created}" />
+        <SelectableTextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Item.Entry.Package.CreatedAt, StringFormat={}{0:dd.MM.yyyy}}" />
+        <SelectableTextBlock Grid.Row="4" Classes="label" Text="{x:Static r:Strings.Cat_Keywords}" />
+        <SelectableTextBlock Grid.Row="4" Grid.Column="1" Text="{Binding Item.Entry.Package.Keywords}" TextWrapping="Wrap" />
+        <SelectableTextBlock Grid.Row="5" Classes="label" Text="{x:Static r:Strings.Card_Dependencies}" />
+        <SelectableTextBlock Grid.Row="5" Grid.Column="1" Text="{Binding Dependencies}" TextWrapping="Wrap" />
+        <SelectableTextBlock Grid.Row="6" Classes="label" Text="{x:Static r:Strings.Cat_VersionForTarget}" />
+        <SelectableTextBlock Grid.Row="6" Grid.Column="1" Text="{Binding Item.Version}" />
+      </Grid>
+
+      <SelectableTextBlock Classes="muted" Text="{x:Static r:Strings.Card_Loading}" IsVisible="{Binding IsLoading}" />
+      <SelectableTextBlock Classes="muted" Text="{Binding LoadMessage}" TextWrapping="Wrap"
+                 IsVisible="{Binding LoadMessage, Converter={x:Static ObjectConverters.IsNotNull}}" />
+
+      <!-- «Список версий» со статусом для цели (FR-30): выпадающий список, строки — как у прежнего раздела «Версии». -->
+      <TextBlock Classes="section" Text="{x:Static r:Strings.Card_VersionList}" />
+      <ComboBox x:Name="Versions" ItemsSource="{Binding Versions}" SelectedItem="{Binding SelectedVersion}" HorizontalAlignment="Stretch"
+                MaxDropDownHeight="360">
+        <ComboBox.ItemTemplate>
+          <DataTemplate x:DataType="vm:VersionRowViewModel">
+            <Grid ColumnDefinitions="*,Auto">
+              <StackPanel Orientation="Horizontal" Spacing="8">
+                <TextBlock Text="{Binding Version}" FontWeight="SemiBold" />
+                <TextBlock Classes="muted" FontSize="12" Text="{Binding Date}" VerticalAlignment="Center" />
+                <Border Classes="badge prerelease" IsVisible="{Binding IsPrerelease}">
+                  <TextBlock Text="{x:Static r:Strings.Cat_Prerelease}" />
+                </Border>
+              </StackPanel>
+              <Border Grid.Column="1" Classes="badge" Classes.native="{Binding IsNative}" Classes.backward="{Binding IsBackward}"
+                      Classes.unrestricted="{Binding IsUnrestricted}" Classes.incompatible="{Binding IsIncompatible}"
+                      Classes.unknown="{Binding IsUnknown}"
+                      IsVisible="{Binding StatusText, Converter={x:Static ObjectConverters.IsNotNull}}">
+                <TextBlock Text="{Binding StatusText}" />
+              </Border>
+            </Grid>
+          </DataTemplate>
+        </ComboBox.ItemTemplate>
+      </ComboBox>
+
+      <!-- Дистрибутивы выбранной версии; «будет установлен» — по 17.6. -->
+      <SelectableTextBlock Classes="section" Text="{Binding DistributionsTitle}" IsVisible="{Binding DistributionsTitle, Converter={x:Static ObjectConverters.IsNotNull}}" />
+      <ItemsControl ItemsSource="{Binding SelectedVersion.Distributions, FallbackValue={x:Null}}">
+        <ItemsControl.ItemTemplate>
+          <DataTemplate x:DataType="vm:DistributionRowViewModel">
+            <Grid ColumnDefinitions="*,Auto" Margin="0,2">
+              <StackPanel>
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                  <SelectableTextBlock Text="{Binding Tag}" FontFamily="Consolas,Menlo,monospace" />
+                  <Border Classes="badge native" IsVisible="{Binding IsBest}">
+                    <SelectableTextBlock Text="{x:Static r:Strings.Card_BestDistribution}" />
+                  </Border>
+                  <Border Classes="badge incompatible" IsVisible="{Binding IsGone}">
+                    <SelectableTextBlock Text="{x:Static r:Strings.Card_FileGoneBadge}" />
+                  </Border>
+                </StackPanel>
+                <SelectableTextBlock Classes="muted" FontSize="11" Text="{Binding Filename}" TextTrimming="CharacterEllipsis" />
+              </StackPanel>
+              <Border Grid.Column="1" Classes="badge" Classes.native="{Binding IsNative}" Classes.backward="{Binding IsBackward}"
+                      Classes.unrestricted="{Binding IsUnrestricted}" Classes.incompatible="{Binding IsIncompatible}"
+                      Classes.unknown="{Binding IsUnknown}" VerticalAlignment="Top"
+                      IsVisible="{Binding StatusText, Converter={x:Static ObjectConverters.IsNotNull}}">
+                <SelectableTextBlock Text="{Binding StatusText}" />
+              </Border>
+            </Grid>
+          </DataTemplate>
+        </ItemsControl.ItemTemplate>
+      </ItemsControl>
+
+      <!-- Инспекция архива частичным чтением (FR-31, FR-36b). -->
+      <SelectableTextBlock Classes="section" Text="{x:Static r:Strings.Card_Contents}" />
+      <StackPanel Orientation="Horizontal" Spacing="8" IsVisible="{Binding IsInspecting}">
+        <ProgressBar IsIndeterminate="True" Width="60" MinWidth="60" />
+        <SelectableTextBlock Classes="muted" Text="{x:Static r:Strings.Card_Inspecting}" />
+      </StackPanel>
+      <SelectableTextBlock Foreground="{DynamicResource StatusIncompatibleFg}" Text="{Binding InspectionError}" TextWrapping="Wrap"
+                 IsVisible="{Binding InspectionError, Converter={x:Static ObjectConverters.IsNotNull}}" />
+      <Grid x:Name="InspectionGrid" ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" IsVisible="{Binding HasInspection}">
+        <SelectableTextBlock Grid.Row="0" Classes="label" Text="{x:Static r:Strings.Card_ContentKind}" />
+        <SelectableTextBlock Grid.Row="0" Grid.Column="1" Text="{Binding ContentKindText}" />
+        <SelectableTextBlock Grid.Row="1" Classes="label" Text="{x:Static r:Strings.Card_Frameworks}" />
+        <SelectableTextBlock Grid.Row="1" Grid.Column="1" Text="{Binding FrameworksText}" />
+        <SelectableTextBlock Grid.Row="2" Classes="label" Text="{x:Static r:Strings.Card_RhinoPlugins}" />
+        <SelectableTextBlock Grid.Row="2" Grid.Column="1" Text="{Binding RhinoPluginsText}" TextWrapping="Wrap" />
+        <SelectableTextBlock Grid.Row="3" Classes="label" Text="{x:Static r:Strings.Card_GhAssemblies}" />
+        <SelectableTextBlock Grid.Row="3" Grid.Column="1" Text="{Binding GhAssembliesText}" TextWrapping="Wrap" />
+        <SelectableTextBlock Grid.Row="4" Classes="label" Text="{x:Static r:Strings.Card_GhUserObjects}" />
+        <SelectableTextBlock Grid.Row="4" Grid.Column="1" x:Name="GhUserObjectsText" Text="{Binding GhUserObjectsText}" TextWrapping="Wrap" />
+        <SelectableTextBlock Grid.Row="5" Classes="label" Text="{x:Static r:Strings.Card_GhDefinitions}" />
+        <SelectableTextBlock Grid.Row="5" Grid.Column="1" Text="{Binding GhDefinitionsText}" TextWrapping="Wrap" />
+        <SelectableTextBlock Grid.Row="6" Classes="label" Text="{x:Static r:Strings.Card_Files}" />
+        <SelectableTextBlock Grid.Row="6" Grid.Column="1" Text="{Binding Inspection.Entries.Count, FallbackValue=''}" />
+        <SelectableTextBlock Grid.Row="7" Classes="label" Text="{x:Static r:Strings.Card_ArchiveSize}" />
+        <SelectableTextBlock Grid.Row="7" Grid.Column="1" Text="{Binding ArchiveSizeText}" TextWrapping="Wrap" />
+      </Grid>
+      <SelectableTextBlock Classes="muted" FontSize="12" Text="{Binding ManifestProblem}" TextWrapping="Wrap"
+                 IsVisible="{Binding ManifestProblem, Converter={x:Static ObjectConverters.IsNotNull}}" />
+      <SelectableTextBlock Foreground="{DynamicResource StatusIncompatibleFg}" Text="{Binding UnsafeText}" TextWrapping="Wrap"
+                 IsVisible="{Binding UnsafeText, Converter={x:Static ObjectConverters.IsNotNull}}" />
+
+      <!-- Установить (AD-03, FR-50), скачать (FR-36). -->
+      <WrapPanel Margin="0,12,0,0">
+        <Button x:Name="InstallButton" Classes="accent" Content="{x:Static r:Strings.Card_Install}" Command="{Binding InstallCommand}"
+                ToolTip.Tip="{x:Static r:Strings.Card_InstallTargetHint}" Margin="0,0,8,6" />
+        <Button x:Name="ChangeVersionButton" Content="{x:Static r:Strings.Lc_ChangeVersion}" Command="{Binding ChangeVersionCommand}" Margin="0,0,8,6" />
+        <Button x:Name="CardPinButton" Content="{Binding PinButtonText}" Command="{Binding TogglePinCommand}" Margin="0,0,8,6" />
+        <Button x:Name="UninstallButton" Content="{x:Static r:Strings.Un_Button}" Command="{Binding UninstallCommand}" Margin="0,0,8,6" />
+        <Button x:Name="DownloadButton" Content="{x:Static r:Strings.Card_Download}" Command="{Binding DownloadSelectedCommand}" Margin="0,0,8,6" />
+        <Button x:Name="DownloadAllButton" Content="{x:Static r:Strings.Card_DownloadAll}" Command="{Binding DownloadAllCommand}" Margin="0,0,8,6" />
+      </WrapPanel>
+      <SelectableTextBlock x:Name="InstallMessageText" Text="{Binding InstallMessage}" TextWrapping="Wrap" FontSize="12" Margin="0,0,0,4"
+                 IsVisible="{Binding InstallMessage, Converter={x:Static ObjectConverters.IsNotNull}}" />
+      <SelectableTextBlock Classes="muted" FontSize="12" Text="{x:Static r:Strings.Card_InstallFromDownloads}" TextWrapping="Wrap" IsVisible="{Binding CanInstallFromDownloads}" />
+      <SelectableTextBlock Classes="update" FontSize="12" Text="{Binding DownloadMessage}" TextWrapping="Wrap"
+                 IsVisible="{Binding DownloadMessage, Converter={x:Static ObjectConverters.IsNotNull}}" />
+    </StackPanel>
+  </ScrollViewer>
+</UserControl>

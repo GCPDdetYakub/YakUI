@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+
+    <data name="AppTitle" xml:space="preserve"><value>YakUI</value></data>
+  <data name="Nav_Catalog" xml:space="preserve"><value>Catalog</value></data>
+  <data name="Nav_Installed" xml:space="preserve"><value>Installed</value></data>
+  <data name="Nav_Downloads" xml:space="preserve"><value>Downloads</value></data>
+  <data name="Nav_Sources" xml:space="preserve"><value>Sources</value></data>
+  <data name="Nav_Profiles" xml:space="preserve"><value>Sets</value></data>
+  <data name="Nav_Journal" xml:space="preserve"><value>Journal</value></data>
+  <data name="Nav_Settings" xml:space="preserve"><value>Settings</value></data>
+  <data name="Target_Label" xml:space="preserve"><value>Rhino</value></data>
+  <data name="Target_GroupInstalled" xml:space="preserve"><value>Installed</value></data>
+  <data name="Target_GroupNotInstalled" xml:space="preserve"><value>Not installed</value></data>
+  <data name="Target_Any" xml:space="preserve"><value>Any version (no filter)</value></data>
+  <data name="Target_ServiceRelease" xml:space="preserve"><value>Service release</value></data>
+  <data name="Target_ServiceReleaseLatest" xml:space="preserve"><value>latest</value></data>
+  <data name="Target_NotInstalledSuffix" xml:space="preserve"><value>not installed</value></data>
+  <data name="Target_TooltipProfile" xml:space="preserve"><value>Package profile</value></data>
+  <data name="Target_TooltipGhLibraries" xml:space="preserve"><value>Grasshopper Libraries</value></data>
+  <data name="Target_TooltipYak" xml:space="preserve"><value>Built-in yak</value></data>
+  <data name="Target_TooltipNoYak" xml:space="preserve"><value>none</value></data>
+  <data name="Target_None" xml:space="preserve"><value>Rhino not found</value></data>
+  <data name="Caps_Installed" xml:space="preserve"><value>Everything is available: browse, download, install to the Rhino profile and to your own folder.</value></data>
+  <data name="Caps_NotInstalled" xml:space="preserve"><value>Rhino is not installed: browse, download .yak, install to your own folder. Installing to the Rhino profile is unavailable.</value></data>
+  <data name="Caps_Any" xml:space="preserve"><value>Compatibility filter is off: browse and download only.</value></data>
+  <data name="Caps_FilterRelease" xml:space="preserve"><value>Compatibility filter: Rhino {0}</value></data>
+  <data name="Status_Ready" xml:space="preserve"><value>Ready</value></data>
+  <data name="Status_Cancel" xml:space="preserve"><value>Cancel</value></data>
+  <data name="Status_Dismiss" xml:space="preserve"><value>Hide</value></data>
+  <data name="Status_Failed" xml:space="preserve"><value>Error: {0}</value></data>
+  <data name="Status_Cancelled" xml:space="preserve"><value>Cancelled</value></data>
+  <data name="Op_Startup" xml:space="preserve"><value>Looking for Rhino and yak tools</value></data>
+  <data name="Op_CheckYak" xml:space="preserve"><value>Checking yak tools</value></data>
+  <data name="Op_Crawl" xml:space="preserve"><value>Building the catalog cache</value></data>
+  <data name="Op_CrawlDetail" xml:space="preserve"><value>{0} of {1}, {2} threads</value></data>
+  <data name="Op_CrawlThrottled" xml:space="preserve"><value>server asks to slow down — pausing</value></data>
+  <data name="Age_JustNow" xml:space="preserve"><value>just now</value></data>
+  <data name="Age_Minutes" xml:space="preserve"><value>{0} min ago</value></data>
+  <data name="Age_Hours" xml:space="preserve"><value>{0} h ago</value></data>
+  <data name="Catalog_StatusEmpty" xml:space="preserve"><value>Catalog not loaded</value></data>
+  <data name="Catalog_StatusBuilding" xml:space="preserve"><value>Catalog: {0} of {1} · compatibility pending</value></data>
+  <data name="Catalog_StatusReady" xml:space="preserve"><value>Catalog: {0} packages · updated {1}</value></data>
+  <data name="Catalog_StatusOffline" xml:space="preserve"><value>Catalog offline · data from {0}</value></data>
+  <data name="Catalog_StatusPending" xml:space="preserve"><value>Catalog: {0} packages · pending {1}</value></data>
+  <data name="Placeholder_Step" xml:space="preserve"><value>This screen will appear in step {0}.</value></data>
+  <data name="Placeholder_Stage" xml:space="preserve"><value>This screen will appear in stage {0}.</value></data>
+  <data name="Placeholder_CurrentTarget" xml:space="preserve"><value>Selected target</value></data>
+  <data name="Cat_SearchWatermark" xml:space="preserve"><value>Search by name, description, keywords and authors</value></data>
+  <data name="Cat_Sort" xml:space="preserve"><value>Sort</value></data>
+  <data name="Cat_SortName" xml:space="preserve"><value>by name</value></data>
+  <data name="Cat_SortDownloads" xml:space="preserve"><value>by downloads (total)</value></data>
+  <data name="Cat_SortMonth" xml:space="preserve"><value>by downloads last month</value></data>
+  <data name="Cat_SortUpdated" xml:space="preserve"><value>by update date</value></data>
+  <data name="Cat_SortCreated" xml:space="preserve"><value>by creation date</value></data>
+  <data name="Cat_Descending" xml:space="preserve"><value>descending</value></data>
+  <data name="Cat_Statuses" xml:space="preserve"><value>Compatibility:</value></data>
+  <data name="Cat_Platform" xml:space="preserve"><value>Platform:</value></data>
+  <data name="Cat_HidePrerelease" xml:space="preserve"><value>Hide pre-releases</value></data>
+  <data name="Cat_OnlyInstalled" xml:space="preserve"><value>installed only</value></data>
+  <data name="Cat_OnlyWithUpdate" xml:space="preserve"><value>has update</value></data>
+  <data name="Cat_FilterOff" xml:space="preserve"><value>“Any version” is selected: the compatibility filter is off.</value></data>
+  <data name="Cat_Count" xml:space="preserve"><value>Showing {0} of {1}</value></data>
+  <data name="Cat_CountPending" xml:space="preserve"><value>Showing {0} of {1} · compatibility pending for {2}</value></data>
+  <data name="Cat_Empty" xml:space="preserve"><value>Nothing found. Change the query or filters.</value></data>
+  <data name="Cat_NoCache" xml:space="preserve"><value>The catalog is not loaded yet — the cache is being built.</value></data>
+  <data name="Cat_Installed" xml:space="preserve"><value>installed {0}</value></data>
+  <data name="Cat_UpdateTo" xml:space="preserve"><value>update → {0}</value></data>
+  <data name="Cat_Downloads" xml:space="preserve"><value>{0} downloads</value></data>
+  <data name="Cat_MacOnlyBadge" xml:space="preserve"><value>Mac only</value></data>
+  <data name="Cat_Prerelease" xml:space="preserve"><value>prerelease</value></data>
+  <data name="Cat_DetailsHint" xml:space="preserve"><value>Select a package to see its versions, distributions and archive contents.</value></data>
+  <data name="Cat_Authors" xml:space="preserve"><value>Authors</value></data>
+  <data name="Cat_VersionForTarget" xml:space="preserve"><value>Version for target</value></data>
+  <data name="Cat_Updated" xml:space="preserve"><value>Updated</value></data>
+  <data name="Cat_Created" xml:space="preserve"><value>Created</value></data>
+  <data name="Cat_DownloadsTotal" xml:space="preserve"><value>Downloads: total / last month</value></data>
+  <data name="Cat_Keywords" xml:space="preserve"><value>Keywords</value></data>
+  <data name="Cat_VersionsCount" xml:space="preserve"><value>Versions in catalog</value></data>
+  <data name="Status_Native" xml:space="preserve"><value>Native</value></data>
+  <data name="Status_Backward" xml:space="preserve"><value>Backward compatible</value></data>
+  <data name="Status_Unrestricted" xml:space="preserve"><value>Unrestricted</value></data>
+  <data name="Status_Incompatible" xml:space="preserve"><value>Incompatible</value></data>
+  <data name="Status_Unknown" xml:space="preserve"><value>Unknown</value></data>
+  <data name="Status_Pending" xml:space="preserve"><value>pending</value></data>
+  <data name="Status_NoFilter" xml:space="preserve"><value>—</value></data>
+  <data name="Status_BackwardHint" xml:space="preserve"><value>Built for an older Rhino version; it is not guaranteed to work.</value></data>
+  <data name="Card_Homepage" xml:space="preserve"><value>Package website</value></data>
+  <data name="Card_NoHomepage" xml:space="preserve"><value>No website</value></data>
+  <data name="Card_Owners" xml:space="preserve"><value>Owners</value></data>
+  <data name="Card_OwnersUnavailable" xml:space="preserve"><value>unavailable (server did not respond)</value></data>
+  <data name="Card_Downloads" xml:space="preserve"><value>Downloads</value></data>
+  <data name="Card_DownloadsValue" xml:space="preserve"><value>total {0} · day {1} · week {2} · month {3}</value></data>
+  <data name="Card_Dependencies" xml:space="preserve"><value>Dependencies</value></data>
+  <data name="Card_NoDependencies" xml:space="preserve"><value>none</value></data>
+  <data name="Card_Versions" xml:space="preserve"><value>Versions</value></data>
+  <data name="Card_Distributions" xml:space="preserve"><value>Distributions of version {0}</value></data>
+  <data name="Card_BestDistribution" xml:space="preserve"><value>will be installed</value></data>
+  <data name="Card_Contents" xml:space="preserve"><value>Archive contents</value></data>
+  <data name="Card_Inspecting" xml:space="preserve"><value>Reading the archive directory…</value></data>
+  <data name="Card_InspectFailed" xml:space="preserve"><value>Could not read the archive: {0}</value></data>
+  <data name="Card_ContentKind" xml:space="preserve"><value>Type</value></data>
+  <data name="Card_Frameworks" xml:space="preserve"><value>.NET targets</value></data>
+  <data name="Card_RhinoPlugins" xml:space="preserve"><value>Rhino plug-ins (.rhp)</value></data>
+  <data name="Card_GhAssemblies" xml:space="preserve"><value>Grasshopper assemblies</value></data>
+  <data name="Card_Files" xml:space="preserve"><value>Files</value></data>
+  <data name="Card_ArchiveSize" xml:space="preserve"><value>Size</value></data>
+  <data name="Card_ArchiveSizeValue" xml:space="preserve"><value>{0} (extracted {1}); read {2}</value></data>
+  <data name="Card_UnsafePaths" xml:space="preserve"><value>Unsafe paths in the archive: {0}</value></data>
+  <data name="Card_ManifestMissing" xml:space="preserve"><value>Manifest: {0}</value></data>
+  <data name="Card_Kind_None" xml:space="preserve"><value>no binaries</value></data>
+  <data name="Card_Kind_Rhino" xml:space="preserve"><value>Rhino plug-in</value></data>
+  <data name="Card_Kind_Grasshopper" xml:space="preserve"><value>Grasshopper</value></data>
+  <data name="Card_Kind_Mixed" xml:space="preserve"><value>Rhino + Grasshopper</value></data>
+  <data name="Card_Install" xml:space="preserve"><value>Install</value></data>
+  <data name="Card_Download" xml:space="preserve"><value>Download .yak</value></data>
+  <data name="Card_Food4Rhino" xml:space="preserve"><value>Find on Food4Rhino</value></data>
+  <data name="Card_Loading" xml:space="preserve"><value>Loading versions…</value></data>
+  <data name="Card_LoadFailed" xml:space="preserve"><value>Versions unavailable: {0}</value></data>
+  <data name="Card_Offline" xml:space="preserve"><value>Server unavailable — cached data.</value></data>
+  <data name="Inst_Refresh" xml:space="preserve"><value>Refresh</value></data>
+  <data name="Inst_Filter" xml:space="preserve"><value>Filter by name</value></data>
+  <data name="Inst_NotInstalledTarget" xml:space="preserve"><value>Rhino {0} is not installed on this computer — nothing to show. Select an installed Rhino or “Any version” for a summary.</value></data>
+  <data name="Inst_Count" xml:space="preserve"><value>Packages: {0}</value></data>
+  <data name="Inst_CountWithUpdates" xml:space="preserve"><value>Packages: {0} · with updates: {1}</value></data>
+  <data name="Inst_Loading" xml:space="preserve"><value>Reading the package profile and yak list…</value></data>
+  <data name="Inst_Empty" xml:space="preserve"><value>No packages found.</value></data>
+  <data name="Inst_Running" xml:space="preserve"><value>{0} is running ({1}): changes take effect after restart.</value></data>
+  <data name="Inst_RunningInside" xml:space="preserve"><value>Rhino.Inside in {0}</value></data>
+  <data name="Inst_YakListProblem" xml:space="preserve"><value>yak list unavailable: {0} Only the profile contents are shown.</value></data>
+  <data name="Inst_ModeStandard" xml:space="preserve"><value>standard</value></data>
+  <data name="Inst_SourceUser" xml:space="preserve"><value>user profile</value></data>
+  <data name="Inst_SourceAllUsers" xml:space="preserve"><value>all users (read-only)</value></data>
+  <data name="Inst_StatusActive" xml:space="preserve"><value>active</value></data>
+  <data name="Inst_StatusPendingRestart" xml:space="preserve"><value>waiting for restart</value></data>
+  <data name="Inst_StatusUnknown" xml:space="preserve"><value>version unknown</value></data>
+  <data name="Inst_Inactive" xml:space="preserve"><value>inactive: {0}</value></data>
+  <data name="Inst_MissingInYakList" xml:space="preserve"><value>not in yak list</value></data>
+  <data name="Inst_MissingInProfile" xml:space="preserve"><value>in yak list ({0}), not in profile</value></data>
+  <data name="Inst_VersionMismatch" xml:space="preserve"><value>yak list: {0}</value></data>
+  <data name="Inst_NotInCatalog" xml:space="preserve"><value>not in catalog</value></data>
+  <data name="Inst_OpenFolder" xml:space="preserve"><value>Open folder</value></data>
+  <data name="Inst_ShowInCatalog" xml:space="preserve"><value>Show in catalog</value></data>
+  <data name="Inst_Remove" xml:space="preserve"><value>Remove</value></data>
+  <data name="Inst_ColName" xml:space="preserve"><value>Package</value></data>
+  <data name="Inst_ColVersion" xml:space="preserve"><value>Version</value></data>
+  <data name="Inst_ColSource" xml:space="preserve"><value>Source</value></data>
+  <data name="Inst_ColKind" xml:space="preserve"><value>Type</value></data>
+  <data name="Inst_ColStatus" xml:space="preserve"><value>Status</value></data>
+  <data name="Inst_ColUpdate" xml:space="preserve"><value>Update</value></data>
+  <data name="Inst_AllTargets" xml:space="preserve"><value>Summary for all installed Rhino versions</value></data>
+  <data name="Dlg_Cancel" xml:space="preserve"><value>Cancel</value></data>
+  <data name="Dl_Folder" xml:space="preserve"><value>Downloads folder: {0}</value></data>
+  <data name="Dl_OpenFolder" xml:space="preserve"><value>Open folder</value></data>
+  <data name="Dl_Queue" xml:space="preserve"><value>Queue</value></data>
+  <data name="Dl_QueueEmpty" xml:space="preserve"><value>The queue is empty. Download a .yak from the package card in the catalog.</value></data>
+  <data name="Dl_ClearFinished" xml:space="preserve"><value>Clear finished</value></data>
+  <data name="Dl_Library" xml:space="preserve"><value>.yak library</value></data>
+  <data name="Dl_LibraryEmpty" xml:space="preserve"><value>No downloaded files.</value></data>
+  <data name="Dl_Cancel" xml:space="preserve"><value>Cancel</value></data>
+  <data name="Dl_Retry" xml:space="preserve"><value>Retry</value></data>
+  <data name="Dl_Reveal" xml:space="preserve"><value>Show in folder</value></data>
+  <data name="Dl_Delete" xml:space="preserve"><value>Delete file</value></data>
+  <data name="Dl_DeleteTitle" xml:space="preserve"><value>Delete file</value></data>
+  <data name="Dl_DeleteConfirm" xml:space="preserve"><value>Delete {0} from the downloads folder? Installed packages are not affected.</value></data>
+  <data name="Dl_State_Queued" xml:space="preserve"><value>queued</value></data>
+  <data name="Dl_State_Running" xml:space="preserve"><value>downloading</value></data>
+  <data name="Dl_State_Verifying" xml:space="preserve"><value>checking ZIP and SHA-256</value></data>
+  <data name="Dl_State_Completed" xml:space="preserve"><value>done</value></data>
+  <data name="Dl_State_Already" xml:space="preserve"><value>already downloaded</value></data>
+  <data name="Dl_State_Failed" xml:space="preserve"><value>error</value></data>
+  <data name="Dl_State_Cancelled" xml:space="preserve"><value>cancelled</value></data>
+  <data name="Dl_Missing" xml:space="preserve"><value>file removed outside YakUI</value></data>
+  <data name="Card_DownloadAll" xml:space="preserve"><value>Download all distributions</value></data>
+  <data name="Card_DownloadQueued" xml:space="preserve"><value>Added to downloads: {0}</value></data>
+  <data name="Card_NothingToDownload" xml:space="preserve"><value>No suitable distribution to download.</value></data>
+  <data name="Card_FileGone" xml:space="preserve"><value>The file was removed from the server.</value></data>
+  <data name="Card_FileGoneBadge" xml:space="preserve"><value>file removed from server</value></data>
+  <data name="Card_InstallFromDownloads" xml:space="preserve"><value>The file is in the downloads folder — it can be installed from there.</value></data>
+  <data name="Dl_ServerDate" xml:space="preserve"><value>File date on server: {0}</value></data>
+  <data name="Dl_ServerDateUnknown" xml:space="preserve"><value>File date on server unknown</value></data>
+  <data name="Dl_Downloaded" xml:space="preserve"><value>downloaded {0}</value></data>
+  <data name="Card_Installing" xml:space="preserve"><value>Installing {0} {1}…</value></data>
+  <data name="Card_Installed" xml:space="preserve"><value>{0} {1} installed ({2}).</value></data>
+  <data name="Card_InstallMethodYak" xml:space="preserve"><value>via yak</value></data>
+  <data name="Card_InstallMethodBuiltIn" xml:space="preserve"><value>with the built-in installer</value></data>
+  <data name="Card_InstallRestart" xml:space="preserve"><value>Rhino is running — the package loads after restart.</value></data>
+  <data name="Card_InstallFailed" xml:space="preserve"><value>Installation failed: {0}</value></data>
+  <data name="Card_InstallTargetHint" xml:space="preserve"><value>Installation is available only into an installed Rhino version selected in the target list.</value></data>
+  <data name="Un_Title" xml:space="preserve"><value>Remove package</value></data>
+  <data name="Un_Button" xml:space="preserve"><value>Remove</value></data>
+  <data name="Un_Confirm" xml:space="preserve"><value>Remove {0} from {1}?</value></data>
+  <data name="Un_AllVersions" xml:space="preserve"><value>All versions will be removed: {0}.</value></data>
+  <data name="Un_Running" xml:space="preserve"><value>{0} is running: changes take effect after restart; if files are in use, removal will fail.</value></data>
+  <data name="Un_Done" xml:space="preserve"><value>{0} removed from {1} ({2}).</value></data>
+  <data name="Un_MethodBuiltIn" xml:space="preserve"><value>without yak, using the YakUI registry</value></data>
+  <data name="Un_Restart" xml:space="preserve"><value>Rhino is running — changes take effect after restart.</value></data>
+  <data name="Un_Failed" xml:space="preserve"><value>Removal failed: {0}</value></data>
+  <data name="Un_Removing" xml:space="preserve"><value>Removing {0} from {1}</value></data>
+  <data name="Jr_Ms" xml:space="preserve"><value>{0} ms</value></data>
+  <data name="Jr_AllKinds" xml:space="preserve"><value>All operations</value></data>
+  <data name="Jr_ReadFailed" xml:space="preserve"><value>Could not read the journal: {0}</value></data>
+  <data name="Jr_Count" xml:space="preserve"><value>Entries: {0} of {1}</value></data>
+  <data name="Jr_Empty" xml:space="preserve"><value>The journal is empty.</value></data>
+  <data name="Jr_Filter" xml:space="preserve"><value>Search by action, result, output</value></data>
+  <data name="Jr_OnlyErrors" xml:space="preserve"><value>Errors only</value></data>
+  <data name="Jr_OpenLogs" xml:space="preserve"><value>Logs folder</value></data>
+  <data name="Jr_SelectHint" xml:space="preserve"><value>Select an entry to see details and yak output.</value></data>
+  <data name="Jr_ColTime" xml:space="preserve"><value>Time</value></data>
+  <data name="Jr_ColKind" xml:space="preserve"><value>Kind</value></data>
+  <data name="Jr_ColAction" xml:space="preserve"><value>Action</value></data>
+  <data name="Jr_ColResult" xml:space="preserve"><value>Result</value></data>
+  <data name="Jr_ColCode" xml:space="preserve"><value>Code</value></data>
+  <data name="Jr_ColDuration" xml:space="preserve"><value>Dur.</value></data>
+  <data name="Set_Theme" xml:space="preserve"><value>Theme</value></data>
+  <data name="Set_ThemeSystem" xml:space="preserve"><value>System</value></data>
+  <data name="Set_ThemeLight" xml:space="preserve"><value>Light</value></data>
+  <data name="Set_ThemeDark" xml:space="preserve"><value>Dark</value></data>
+  <data name="Set_ThemeHint" xml:space="preserve"><value>“System” follows the Windows theme and changes with it. Applied immediately.</value></data>
+  <data name="Set_Downloads" xml:space="preserve"><value>Downloads folder</value></data>
+  <data name="Set_DownloadsDefault" xml:space="preserve"><value>(default)</value></data>
+  <data name="Set_Change" xml:space="preserve"><value>Change…</value></data>
+  <data name="Set_Reset" xml:space="preserve"><value>Reset</value></data>
+  <data name="Set_DownloadsHint" xml:space="preserve"><value>.yak files are downloaded here. Files already downloaded stay where they are and are still shown on the Downloads screen.</value></data>
+  <data name="Set_DownloadsFailed" xml:space="preserve"><value>Folder not changed: {0}</value></data>
+  <data name="Set_DownloadsChanged" xml:space="preserve"><value>Downloads folder changed.</value></data>
+  <data name="Set_PickDownloads" xml:space="preserve"><value>Downloads folder</value></data>
+  <data name="Set_Yak" xml:space="preserve"><value>yak tools</value></data>
+  <data name="Set_YakHint" xml:space="preserve"><value>Each yak is bound to one Rhino version (by “yak list”). For each version the newest usable yak is used unless another one is pinned. New yak builds are looked up on files.mcneel.com: a downloaded build is verified and placed side by side; switching happens only when no operations are running.</value></data>
+  <data name="Set_YakPin" xml:space="preserve"><value>Pin for its Rhino version</value></data>
+  <data name="Set_YakUnpin" xml:space="preserve"><value>Unpin</value></data>
+  <data name="Set_YakAdd" xml:space="preserve"><value>Add yak.exe…</value></data>
+  <data name="Set_YakRemove" xml:space="preserve"><value>Remove manually added</value></data>
+  <data name="Set_YakConfirm" xml:space="preserve"><value>Trust unsigned…</value></data>
+  <data name="Set_YakOpenFolder" xml:space="preserve"><value>Open folder</value></data>
+  <data name="Set_YakRefresh" xml:space="preserve"><value>Recheck</value></data>
+  <data name="Set_PickYak" xml:space="preserve"><value>Select yak.exe</value></data>
+  <data name="Set_OriginBuiltIn" xml:space="preserve"><value>built-in</value></data>
+  <data name="Set_OriginDownloaded" xml:space="preserve"><value>downloaded</value></data>
+  <data name="Set_OriginManual" xml:space="preserve"><value>added manually</value></data>
+  <data name="Set_YakUnusable" xml:space="preserve"><value>Not used: {0}</value></data>
+  <data name="Set_YakPinned" xml:space="preserve"><value>Pinned and used</value></data>
+  <data name="Set_YakSelected" xml:space="preserve"><value>Used</value></data>
+  <data name="Set_YakUsable" xml:space="preserve"><value>Usable</value></data>
+  <data name="Set_YakNoBinding" xml:space="preserve"><value>binding unknown</value></data>
+  <data name="Set_YakNone" xml:space="preserve"><value>No usable yak: installation uses the YakUI built-in installer, removal works only for packages installed by YakUI.</value></data>
+  <data name="Set_YakUsesNewest" xml:space="preserve"><value>Using the newest usable: {0} — {1}</value></data>
+  <data name="Set_YakUsesPinned" xml:space="preserve"><value>Using the pinned one: {0} — {1}</value></data>
+  <data name="Set_YakPinUnusable" xml:space="preserve"><value>The pinned {0} is currently unusable.</value></data>
+  <data name="Set_YakUnbound" xml:space="preserve"><value>Binding unknown</value></data>
+  <data name="Set_YakUnboundHint" xml:space="preserve"><value>These yak builds are not used: the signature was not accepted, confirmation is needed, or “yak list” did not report the package directory.</value></data>
+  <data name="Set_YakPinDone" xml:space="preserve"><value>yak {0} pinned for Rhino {1}.</value></data>
+  <data name="Set_YakUnpinDone" xml:space="preserve"><value>For Rhino {0} the newest usable yak is selected again.</value></data>
+  <data name="Set_YakConfirmTitle" xml:space="preserve"><value>Unsigned yak</value></data>
+  <data name="Set_YakConfirmUnsigned" xml:space="preserve"><value>File {0} is not signed by Robert McNeel &amp; Associates.
+SHA-256: {1}
+
+YakUI will run exactly this file (by SHA-256). Trust it?</value></data>
+  <data name="Set_YakConfirmButton" xml:space="preserve"><value>Trust</value></data>
+  <data name="Target_Prerelease" xml:space="preserve"><value>pre-release</value></data>
+  <data name="Set_DownloadsBusy" xml:space="preserve"><value>downloads are in progress — wait for them to finish.</value></data>
+  <data name="Card_GhUserObjects" xml:space="preserve"><value>User objects (.ghuser)</value></data>
+  <data name="Card_GhDefinitions" xml:space="preserve"><value>Definitions (.gh, .ghx)</value></data>
+  <data name="Card_FilesCount" xml:space="preserve"><value>{0} files</value></data>
+  <data name="Net_Title" xml:space="preserve"><value>Network</value></data>
+  <data name="Net_ModeSystem" xml:space="preserve"><value>System (as in Windows)</value></data>
+  <data name="Net_ModeNone" xml:space="preserve"><value>No proxy</value></data>
+  <data name="Net_ModeManual" xml:space="preserve"><value>Manual</value></data>
+  <data name="Net_Apply" xml:space="preserve"><value>Apply</value></data>
+  <data name="Net_Check" xml:space="preserve"><value>Check connection</value></data>
+  <data name="Net_Checking" xml:space="preserve"><value>Checking…</value></data>
+  <data name="Net_Applied" xml:space="preserve"><value>Network settings applied: new requests use the selected mode.</value></data>
+  <data name="Net_BadAddress" xml:space="preserve"><value>Proxy address: “host:port” or “socks5://host:port”.</value></data>
+  <data name="Net_StepOk" xml:space="preserve"><value>✓ {0}: {1}</value></data>
+  <data name="Net_StepFailed" xml:space="preserve"><value>✗ {0}: {1}</value></data>
+  <data name="Net_Hint" xml:space="preserve"><value>The mode applies immediately to all YakUI requests (catalog, .yak files, icons) and is passed to yak.exe via environment variables. Proxy login and password are not supported. yak from Rhino 7 runs on .NET Framework and may not support SOCKS; this does not matter for installation — yak installs from a file already downloaded by YakUI.</value></data>
+  <data name="Lc_AutoUpdateOn" xml:space="preserve"><value>{0}: “Automatically update packages when Rhino starts” is on in the Rhino Package Manager — Rhino will update packages at startup, including those pinned in YakUI.</value></data>
+  <data name="Lc_ConfirmChange" xml:space="preserve"><value>Change {0} version: {1} → {2} in {3}?</value></data>
+  <data name="Lc_Newest" xml:space="preserve"><value>the newest suitable</value></data>
+  <data name="Lc_OldRemoved" xml:space="preserve"><value>The new version is installed first; after verification the folder of version {0} is removed. On error {0} stays.</value></data>
+  <data name="Lc_PinMoves" xml:space="preserve"><value>The pin ({0}) moves to the new version.</value></data>
+  <data name="Lc_ChangeTitle" xml:space="preserve"><value>Change version</value></data>
+  <data name="Lc_ChangeButton" xml:space="preserve"><value>Change</value></data>
+  <data name="Lc_Changed" xml:space="preserve"><value>{0}: {1} → {2} ({3}).</value></data>
+  <data name="Lc_ChangeFailed" xml:space="preserve"><value>Version change failed: {0}</value></data>
+  <data name="Lc_PinTitle" xml:space="preserve"><value>Pin version</value></data>
+  <data name="Lc_PinButton" xml:space="preserve"><value>Pin</value></data>
+  <data name="Lc_PinAutoUpdateWarning" xml:space="preserve"><value>Pin {0} {1} in {2}?
+
+“Automatically update packages when Rhino starts” is on in the Rhino Package Manager: the next time Rhino starts it may update the package and break the pin. YakUI will notice and show “changed outside YakUI”. To keep the pin, clear this checkbox in Rhino (_PackageManager).</value></data>
+  <data name="Lc_Pinned" xml:space="preserve"><value>{0} {1} pinned: “Update all” skips it.</value></data>
+  <data name="Lc_Unpinned" xml:space="preserve"><value>{0}: unpinned.</value></data>
+  <data name="Lc_NothingToUpdate" xml:space="preserve"><value>Nothing to update.</value></data>
+  <data name="Lc_NothingChecked" xml:space="preserve"><value>Check the packages first.</value></data>
+  <data name="Lc_PlanPinned" xml:space="preserve"><value>• {0} {1} — pinned, skipped</value></data>
+  <data name="Lc_PlanItem" xml:space="preserve"><value>• {0}: {1} → {2}</value></data>
+  <data name="Lc_ConfirmAll" xml:space="preserve"><value>Update packages in {0}? For each package the new version is installed first, then the previous one is removed; on error the package keeps the previous version.</value></data>
+  <data name="Lc_AllTitle" xml:space="preserve"><value>Update packages</value></data>
+  <data name="Lc_AllButton" xml:space="preserve"><value>Update</value></data>
+  <data name="Lc_Summary" xml:space="preserve"><value>Updated: {0}, skipped: {1}, errors: {2}.</value></data>
+  <data name="Lc_LineUpdated" xml:space="preserve"><value>✓ {0}: {1} → {2}</value></data>
+  <data name="Lc_LineSkipped" xml:space="preserve"><value>– {0}: {1}</value></data>
+  <data name="Lc_LineCancelled" xml:space="preserve"><value>– {0}: cancelled</value></data>
+  <data name="Lc_LineFailed" xml:space="preserve"><value>✗ {0}: {1}</value></data>
+  <data name="Lc_PinMark" xml:space="preserve"><value>📌 pinned {0}</value></data>
+  <data name="Lc_PinStale" xml:space="preserve"><value>📌 pinned {0}, active {1} — changed outside YakUI</value></data>
+  <data name="Lc_Update" xml:space="preserve"><value>Update</value></data>
+  <data name="Lc_PinToggle" xml:space="preserve"><value>Pin / unpin</value></data>
+  <data name="Lc_UpdateAll" xml:space="preserve"><value>Update all</value></data>
+  <data name="Lc_UpdateChecked" xml:space="preserve"><value>Update checked</value></data>
+  <data name="Lc_UninstallChecked" xml:space="preserve"><value>Remove checked</value></data>
+  <data name="Lc_ChangeVersion" xml:space="preserve"><value>Switch to this version</value></data>
+  <data name="Lc_Updating" xml:space="preserve"><value>Updating packages in {0}</value></data>
+  <data name="Lc_Changing" xml:space="preserve"><value>Changing version {0} → {1}</value></data>
+  <data name="Un_ConfirmMany" xml:space="preserve"><value>Remove {0} packages from {1}? All versions will be removed:</value></data>
+  <data name="Card_Pin" xml:space="preserve"><value>Pin version</value></data>
+  <data name="Card_Unpin" xml:space="preserve"><value>Unpin</value></data>
+  <data name="Set_YakCheck" xml:space="preserve"><value>Check for yak updates</value></data>
+  <data name="Set_OpenWizard" xml:space="preserve"><value>First-run wizard…</value></data>
+  <data name="Set_YakDownloadVersion" xml:space="preserve"><value>Download version</value></data>
+  <data name="Set_YakDownload" xml:space="preserve"><value>Download</value></data>
+  <data name="Set_YakRestore" xml:space="preserve"><value>Restore previous yak</value></data>
+  <data name="Set_YakAvailable" xml:space="preserve"><value>A newer build is available: {0}</value></data>
+  <data name="Set_YakBadVersion" xml:space="preserve"><value>yak version number — for example, 0.19.1.</value></data>
+  <data name="Set_YakRestored" xml:space="preserve"><value>The previous yak is pinned for Rhino {0}: {1}</value></data>
+  <data name="Set_YakOnServer" xml:space="preserve"><value>On files.mcneel.com: {0}</value></data>
+  <data name="Set_YakLineNewer" xml:space="preserve"><value>Rhino {0}: using {1}, available {2}</value></data>
+  <data name="Set_YakLineCurrent" xml:space="preserve"><value>Rhino {0}: using {1}, nothing newer</value></data>
+  <data name="Set_YakDownloaded" xml:space="preserve"><value>yak {0} downloaded and verified ({1}); binding: Rhino {2}.</value></data>
+  <data name="Set_YakDownloadedSigned" xml:space="preserve"><value>signed by McNeel</value></data>
+  <data name="Set_YakDownloadedUnsigned" xml:space="preserve"><value>unsigned, downloaded from files.mcneel.com over HTTPS</value></data>
+  <data name="Set_YakSwitched" xml:space="preserve"><value>Rhino {0} now uses yak {1}; previous — {2} (“Restore previous”).</value></data>
+  <data name="Set_YakNotSelected" xml:space="preserve"><value>Rhino {0} still uses {1}: it is not older than the downloaded one or it is pinned.</value></data>
+  <data name="Set_YakWaiting" xml:space="preserve"><value>yak will be switched after the current operations finish (FR-19).</value></data>
+  <data name="Op_YakCheck" xml:space="preserve"><value>Checking for new yak builds</value></data>
+  <data name="Op_YakDownload" xml:space="preserve"><value>Downloading yak {0}</value></data>
+  <data name="Wiz_Title" xml:space="preserve"><value>YakUI first run</value></data>
+  <data name="Wiz_Intro" xml:space="preserve"><value>YakUI installs packages with the yak.exe of the Rhino version being installed into. Below are the built-in yak of each Rhino version found and newer builds of the same line from files.mcneel.com. Downloading is optional: you can skip the wizard and open it later in Settings.</value></data>
+  <data name="Wiz_Available" xml:space="preserve"><value>Download the newer yak build {0}</value></data>
+  <data name="Wiz_BuiltIn" xml:space="preserve"><value>Built-in yak {0}: bound to Rhino {1}, {2}.</value></data>
+  <data name="Wiz_NoBuiltIn" xml:space="preserve"><value>No built-in yak.exe.</value></data>
+  <data name="Wiz_SignedMcNeel" xml:space="preserve"><value>signed by Robert McNeel &amp; Associates</value></data>
+  <data name="Wiz_NotSigned" xml:space="preserve"><value>signature not accepted</value></data>
+  <data name="Wiz_NoYak" xml:space="preserve"><value>No usable yak: installation uses the YakUI built-in installer without “yak list” verification; only packages installed by YakUI can be removed.</value></data>
+  <data name="Wiz_Checking" xml:space="preserve"><value>Looking for new yak builds on files.mcneel.com…</value></data>
+  <data name="Wiz_CheckFailed" xml:space="preserve"><value>Could not check for new builds: {0}</value></data>
+  <data name="Wiz_Finish" xml:space="preserve"><value>Done</value></data>
+  <data name="Wiz_Skip" xml:space="preserve"><value>Skip</value></data>
+  <data name="Wiz_NoRhino" xml:space="preserve"><value>No installed Rhino 6+ found. Catalog, downloads and inspection work without Rhino.</value></data>
+  <data name="Io_WindowTitle" xml:space="preserve"><value>Install</value></data>
+  <data name="Io_Title" xml:space="preserve"><value>Install {0} {1} for {2}</value></data>
+  <data name="Io_ModeStandard" xml:space="preserve"><value>Standard profile</value></data>
+  <data name="Io_ModeStandardHint" xml:space="preserve"><value>As Rhino does it: {0}. Via the target's yak or the built-in installer.</value></data>
+  <data name="Io_ModeCustom" xml:space="preserve"><value>Custom folder</value></data>
+  <data name="Io_ModeCustomHint" xml:space="preserve"><value>Layout &lt;folder&gt;\&lt;name&gt;\&lt;version&gt;. Grasshopper — via a .ghlink, .rhp — extracted with instructions only.</value></data>
+  <data name="Io_ModeUnpack" xml:space="preserve"><value>Extract only</value></data>
+  <data name="Io_ModeUnpackHint" xml:space="preserve"><value>No registration in Rhino or Grasshopper — for Rhino.Inside, manual loading and inspection.</value></data>
+  <data name="Io_Folder" xml:space="preserve"><value>Folder</value></data>
+  <data name="Io_OtherFolder" xml:space="preserve"><value>Other folder…</value></data>
+  <data name="Io_NoRoots" xml:space="preserve"><value>Custom folders are added in Settings or with “Other folder…”.</value></data>
+  <data name="Io_GhLinkShared" xml:space="preserve"><value>A .ghlink in Grasshopper\Libraries applies to every Rhino version with Grasshopper: {0}.</value></data>
+  <data name="Io_GhLinkIncompatible" xml:space="preserve"><value>Distribution {0} was built for Rhino {2}. It may not load in {1}.</value></data>
+  <data name="Io_Duplicate" xml:space="preserve"><value>{0} is already installed {1} for this Rhino version — double loading or an assembly conflict is possible (FR-47).</value></data>
+  <data name="Io_InStandard" xml:space="preserve"><value>in the standard profile</value></data>
+  <data name="Io_InCustom" xml:space="preserve"><value>in a custom folder</value></data>
+  <data name="Imp_Title" xml:space="preserve"><value>Import file</value></data>
+  <data name="Imp_NoRhiexec" xml:space="preserve"><value>Rhino Installer Engine (rhiexec.exe) not found: .rhi files are opened with it.</value></data>
+  <data name="Imp_RhiConfirm" xml:space="preserve"><value>File {0} is installed by the standard Rhino Installer Engine:
+{1}
+
+Rhino versions are chosen in its window. YakUI does not track this installation.</value></data>
+  <data name="Imp_RhiButton" xml:space="preserve"><value>Run</value></data>
+  <data name="Imp_RhiLaunched" xml:space="preserve"><value>Rhino Installer Engine started for {0}.</value></data>
+  <data name="Imp_Failed" xml:space="preserve"><value>Import of {0} failed: {1}</value></data>
+  <data name="Imp_NeedTarget" xml:space="preserve"><value>Select an installed Rhino version in the list — the import goes to it.</value></data>
+  <data name="Imp_Running" xml:space="preserve"><value>Importing {0}</value></data>
+  <data name="Imp_AddFile" xml:space="preserve"><value>Add file…</value></data>
+  <data name="Imp_DropHint" xml:space="preserve"><value>Drag a .yak, .zip, .gha, .ghuser, .rhp or .rhi file into the window to import it.</value></data>
+  <data name="Cp_ConfirmUninstall" xml:space="preserve"><value>Remove {0} {1}?
+Folder: {2}</value></data>
+  <data name="Cp_ConfirmLinks" xml:space="preserve"><value>Files created by YakUI will be removed:
+{0}</value></data>
+  <data name="Cp_Uninstalled" xml:space="preserve"><value>{0} removed ({1}); links and objects removed: {2}.</value></data>
+  <data name="Cp_ImportNoUpdate" xml:space="preserve"><value>An imported package is updated by importing the file of the new version again.</value></data>
+  <data name="Cp_NoVersion" xml:space="preserve"><value>{0} has no version compatible with {1}.</value></data>
+  <data name="Cp_ModeCustom" xml:space="preserve"><value>custom folder</value></data>
+  <data name="Cp_Installed" xml:space="preserve"><value>{0} {1} installed to {2}.</value></data>
+  <data name="Cp_Unpacked" xml:space="preserve"><value>{0} {1} extracted to {2} (not registered).</value></data>
+  <data name="Cp_GhLink" xml:space="preserve"><value>Grasshopper: link {0}.</value></data>
+  <data name="Cp_UserObjects" xml:space="preserve"><value>User objects copied to UserObjects: {0}.</value></data>
+  <data name="Cp_RhpTitle" xml:space="preserve"><value>Rhino plug-in</value></data>
+  <data name="Cp_RhpInstruction" xml:space="preserve"><value>Rhino plug-ins were extracted, but YakUI does not register them (FR-44, registration comes in version 1.1):
+{0}
+
+To load: drag the .rhp into the Rhino window or open PluginManager → Install… and select the file.</value></data>
+  <data name="Cp_OpenFolder" xml:space="preserve"><value>Open folder</value></data>
+  <data name="Inst_ModeCustom" xml:space="preserve"><value>custom</value></data>
+  <data name="Inst_ModeUnpack" xml:space="preserve"><value>extracted</value></data>
+  <data name="Inst_SourceCustom" xml:space="preserve"><value>folder: {0}</value></data>
+  <data name="Inst_ImportFile" xml:space="preserve"><value>Import: file</value></data>
+  <data name="Inst_ImportF4R" xml:space="preserve"><value>Import: Food4Rhino</value></data>
+  <data name="Inst_Duplicate" xml:space="preserve"><value>installed both in the profile and in a custom folder — double loading is possible</value></data>
+  <data name="Set_Roots" xml:space="preserve"><value>Custom folders</value></data>
+  <data name="Set_RootsHint" xml:space="preserve"><value>Folders for custom-path installation and “extract only”, including network folders. Removing from the list does not delete files.</value></data>
+  <data name="Set_RootAdd" xml:space="preserve"><value>Add folder…</value></data>
+  <data name="Set_RootRemove" xml:space="preserve"><value>Remove from list</value></data>
+  <data name="Set_RootAdded" xml:space="preserve"><value>Folder added: {0}</value></data>
+  <data name="Set_RootNotWritable" xml:space="preserve"><value>Cannot write to the folder: {0}</value></data>
+  <data name="Set_PickRoot" xml:space="preserve"><value>Custom folder</value></data>
+  <data name="Io_Runtime" xml:space="preserve"><value>.NET runtime for the Grasshopper link</value></data>
+  <data name="Io_RuntimeCore" xml:space="preserve"><value>.NET 7/8 (regular Rhino 8, Revit 2025+)</value></data>
+  <data name="Io_RuntimeFx" xml:space="preserve"><value>.NET Framework 4.8 (Revit 2021–2024 / Rhino.Inside, Rhino 8 in NetFx mode)</value></data>
+  <data name="Io_RuntimeCoreWarning" xml:space="preserve"><value>Link to the .NET 7/8 assembly: in Rhino.Inside in Revit 2021–2024 and in Rhino 8 in NetFx mode the package will not load.</value></data>
+  <data name="Io_RuntimeFxWarning" xml:space="preserve"><value>Link to the .NET Framework 4.8 assembly: in regular Rhino 8 (.NET 7/8) and Revit 2025+ the net48 assembly is loaded — whether it works depends on the package.</value></data>
+  <data name="Io_MultiRuntimeHint" xml:space="preserve"><value>The package has assemblies for both .NET Framework 4.8 and .NET 7/8. The standard profile is recommended: Rhino picks the right assembly in each environment (regular Rhino 8, Rhino.Inside in Revit).</value></data>
+  <data name="Io_MultiRuntimeRecommend" xml:space="preserve"><value>Custom folder: one .ghlink in the shared Grasshopper\Libraries points to one assembly — it will not suit every environment where Rhino runs. The standard profile is recommended.</value></data>
+  <data name="Io_DepsFound" xml:space="preserve"><value>Also copy the assemblies found next to the file: {0}</value></data>
+  <data name="Io_DepsMissing" xml:space="preserve"><value>Missing: {0}. The plug-in will not load. Import the whole package archive or folder.</value></data>
+  <data name="Imp_AddFolder" xml:space="preserve"><value>Add folder…</value></data>
+  <data name="Card_VersionList" xml:space="preserve"><value>Version list</value></data>
+  <data name="Status_Food4RhinoTip" xml:space="preserve"><value>Search the selected package on Food4Rhino, or open food4rhino.com</value></data>
+  <data name="Err_NoDistributionUrl" xml:space="preserve"><value>The distribution has no download link.</value></data>
+  <data name="Set_Language" xml:space="preserve"><value>Interface language</value></data>
+  <data name="Set_LanguageSystem" xml:space="preserve"><value>System</value></data>
+  <data name="Set_LanguageHint" xml:space="preserve"><value>“System” means Russian on Russian Windows, English otherwise.</value></data>
+  <data name="Set_LanguageRestart" xml:space="preserve"><value>The language changes after YakUI restarts.</value></data>
+  <data name="Portable_NotWritable" xml:space="preserve"><value>The portable YakUI (portable.flag) keeps its data next to the program, but the folder {0} is not writable.
+
+Move the YakUI folder to a writable location (for example, C:\Tools\YakUI or your user folder), or install YakUI with the installer.</value></data>
+  <data name="Hosts_Open" xml:space="preserve"><value>Open hosts</value></data>
+  <data name="Hosts_OpenTip" xml:space="preserve"><value>Open the system hosts file in a text editor as administrator</value></data>
+  <data name="Hosts_Title" xml:space="preserve"><value>Hosts file</value></data>
+  <data name="Hosts_Indicator" xml:space="preserve"><value>hosts: active {0} · commented {1} · missing {2}</value></data>
+  <data name="Hosts_LineActive" xml:space="preserve"><value>{0} — active, line {1}</value></data>
+  <data name="Hosts_LineCommented" xml:space="preserve"><value>{0} — commented out, line {1}</value></data>
+  <data name="Hosts_LineMissing" xml:space="preserve"><value>{0} — missing</value></data>
+  <data name="Hosts_BackupFailed" xml:space="preserve"><value>Could not back up hosts: {0}. The file was not opened.</value></data>
+  <data name="Hosts_ViewOnlyConfirm" xml:space="preserve"><value>Administrator rights were not granted — changes to hosts cannot be saved. Open the file for viewing only?</value></data>
+  <data name="Hosts_ViewOnlyButton" xml:space="preserve"><value>Open for viewing</value></data>
+  <data name="Hosts_OpenFailed" xml:space="preserve"><value>The editor did not start: {0}</value></data>
+  <data name="Hosts_NotRestored" xml:space="preserve"><value>hosts was not restored after the previous YakUI session (crash or UAC declined): it still contains changes. Restore hosts from the backup? Administrator rights are required.</value></data>
+  <data name="Hosts_RestoreButton" xml:space="preserve"><value>Restore</value></data>
+  <data name="Hosts_CloseEditor" xml:space="preserve"><value>The editor with the hosts file is still open. Close it, otherwise it may save the changes again. Then hosts will be restored from the backup.</value></data>
+  <data name="Hosts_EditorNotChosen" xml:space="preserve"><value>not chosen — you will be asked when opening</value></data>
+  <data name="Hosts_Duplicate" xml:space="preserve"><value>Line {0} is already in the list.</value></data>
+  <data name="Hosts_EditorSection" xml:space="preserve"><value>Hosts file editor</value></data>
+  <data name="Hosts_EditorChange" xml:space="preserve"><value>Change…</value></data>
+  <data name="Hosts_EditorReset" xml:space="preserve"><value>Reset</value></data>
+  <data name="Hosts_EditorHint" xml:space="preserve"><value>“Reset” — the editor will be asked again on the next “Open hosts”.</value></data>
+  <data name="Hosts_ListSection" xml:space="preserve"><value>Hosts file: watched lines</value></data>
+  <data name="Hosts_ListHint" xml:space="preserve"><value>Lines “IP host_name” whose state is shown next to the “Open hosts” button: active, commented out or missing. An empty list hides the indicator. When YakUI closes, hosts changes made during the session are reverted from the backup.</value></data>
+  <data name="Hosts_LineWatermark" xml:space="preserve"><value>127.0.0.1 example.com</value></data>
+  <data name="Hosts_Add" xml:space="preserve"><value>Add</value></data>
+  <data name="Hosts_Replace" xml:space="preserve"><value>Update</value></data>
+  <data name="Hosts_Remove" xml:space="preserve"><value>Remove</value></data>
+  <data name="Hosts_Up" xml:space="preserve"><value>Up</value></data>
+  <data name="Hosts_Down" xml:space="preserve"><value>Down</value></data>
+  <data name="Hosts_ChooseTitle" xml:space="preserve"><value>Open with</value></data>
+  <data name="Hosts_ChooseHint" xml:space="preserve"><value>Choose an editor for the hosts file. It will be started as administrator.</value></data>
+  <data name="Hosts_Browse" xml:space="preserve"><value>Browse…</value></data>
+  <data name="Hosts_Arguments" xml:space="preserve"><value>Command-line arguments (optional)</value></data>
+  <data name="Hosts_Remember" xml:space="preserve"><value>Remember my choice</value></data>
+  <data name="Hosts_OpenButton" xml:space="preserve"><value>Open</value></data>
+  <data name="Hosts_PickExe" xml:space="preserve"><value>Choose an editor</value></data>
+  <data name="Hosts_PickExeFilter" xml:space="preserve"><value>Programs</value></data>
+</root>

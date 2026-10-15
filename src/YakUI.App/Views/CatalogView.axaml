@@ -1,0 +1,107 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:YakUI.App.ViewModels"
+             xmlns:r="using:YakUI.App.Resources"
+             xmlns:v="using:YakUI.App.Views"
+             x:Class="YakUI.App.Views.CatalogView"
+             x:DataType="vm:CatalogViewModel">
+
+  <DockPanel>
+
+    <!-- Поиск и сортировка (FR-25, FR-26). -->
+    <Grid DockPanel.Dock="Top" ColumnDefinitions="*,Auto,Auto,Auto" Margin="0,0,0,10">
+      <TextBox Grid.Column="0" x:Name="SearchBox" Text="{Binding SearchText}"
+               Watermark="{x:Static r:Strings.Cat_SearchWatermark}" />
+      <TextBlock Grid.Column="1" Text="{x:Static r:Strings.Cat_Sort}" VerticalAlignment="Center" Margin="16,0,8,0" />
+      <ComboBox Grid.Column="2" x:Name="SortCombo" MinWidth="210" ItemsSource="{Binding SortOptions}" SelectedItem="{Binding SelectedSort}">
+        <ComboBox.ItemTemplate>
+          <DataTemplate x:DataType="vm:SortOption">
+            <TextBlock Text="{Binding Title}" />
+          </DataTemplate>
+        </ComboBox.ItemTemplate>
+      </ComboBox>
+      <CheckBox Grid.Column="3" Content="{x:Static r:Strings.Cat_Descending}" IsChecked="{Binding Descending}" Margin="12,0,0,0" />
+    </Grid>
+
+    <!-- Фильтры (FR-22): статусы совместимости, платформа, «Скрыть пре-релизы»; внутри группы — ИЛИ, всё снято — весь каталог. -->
+    <WrapPanel DockPanel.Dock="Top" Margin="0,0,0,8">
+      <TextBlock Text="{x:Static r:Strings.Cat_Statuses}" VerticalAlignment="Center" Margin="0,0,10,0" />
+      <CheckBox x:Name="ShowNative" Classes="status native" Content="{x:Static r:Strings.Status_Native}" IsChecked="{Binding ShowNative}" IsEnabled="{Binding IsCompatibilityFilterOn}" />
+      <CheckBox Classes="status backward" Content="{x:Static r:Strings.Status_Backward}" IsChecked="{Binding ShowBackward}" IsEnabled="{Binding IsCompatibilityFilterOn}" />
+      <CheckBox Classes="status unrestricted" Content="{x:Static r:Strings.Status_Unrestricted}" IsChecked="{Binding ShowUnrestricted}" IsEnabled="{Binding IsCompatibilityFilterOn}" />
+      <CheckBox x:Name="ShowIncompatible" Classes="status incompatible" Content="{x:Static r:Strings.Status_Incompatible}" IsChecked="{Binding ShowIncompatible}" IsEnabled="{Binding IsCompatibilityFilterOn}" />
+      <Rectangle Width="1" Height="20" Fill="{DynamicResource DividerBrush}" Margin="10,0" />
+      <TextBlock Text="{x:Static r:Strings.Cat_Platform}" VerticalAlignment="Center" Margin="0,0,10,0" />
+      <CheckBox x:Name="ShowWindows" Content="Windows" IsChecked="{Binding ShowWindows}" />
+      <CheckBox x:Name="ShowMac" Content="Mac" IsChecked="{Binding ShowMac}" />
+      <Rectangle Width="1" Height="20" Fill="{DynamicResource DividerBrush}" Margin="10,0" />
+      <CheckBox x:Name="HidePrerelease" Content="{x:Static r:Strings.Cat_HidePrerelease}" IsChecked="{Binding HidePrerelease}" />
+      <CheckBox Content="{x:Static r:Strings.Cat_OnlyInstalled}" IsChecked="{Binding OnlyInstalled}" />
+      <CheckBox Content="{x:Static r:Strings.Cat_OnlyWithUpdate}" IsChecked="{Binding OnlyWithUpdate}" />
+    </WrapPanel>
+
+    <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Spacing="16" Margin="0,0,0,8">
+      <TextBlock x:Name="CountText" Classes="muted" Text="{Binding CountText}" />
+      <TextBlock Classes="muted" Text="{x:Static r:Strings.Cat_FilterOff}" IsVisible="{Binding !IsCompatibilityFilterOn}" />
+    </StackPanel>
+
+    <Grid ColumnDefinitions="*,440">
+
+      <!-- Список пакетов (виртуализирован). -->
+      <Panel Grid.Column="0">
+        <ListBox x:Name="Packages" ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem}"
+                 BorderBrush="{DynamicResource DividerBrush}" BorderThickness="1" CornerRadius="6">
+          <ListBox.ItemTemplate>
+            <DataTemplate x:DataType="vm:CatalogItemViewModel">
+              <Grid ColumnDefinitions="Auto,*,Auto" Margin="2,4">
+                <v:PackageIconView Grid.Column="0" Width="36" Height="36" Margin="0,0,12,0" VerticalAlignment="Top" DataContext="{Binding Icon}" />
+                <StackPanel Grid.Column="1" Spacing="2">
+                  <StackPanel Orientation="Horizontal" Spacing="8">
+                    <TextBlock Text="{Binding Name}" FontWeight="SemiBold" />
+                    <TextBlock Classes="muted" Text="{Binding Version}" />
+                    <Border Classes="badge prerelease" IsVisible="{Binding IsPrerelease}">
+                      <TextBlock Text="{x:Static r:Strings.Cat_Prerelease}" />
+                    </Border>
+                    <Border Classes="badge mac" IsVisible="{Binding IsMacOnly}">
+                      <TextBlock Text="{x:Static r:Strings.Cat_MacOnlyBadge}" />
+                    </Border>
+                  </StackPanel>
+                  <TextBlock Classes="muted" FontSize="12" Text="{Binding Authors}" TextTrimming="CharacterEllipsis" />
+                  <TextBlock FontSize="12" Text="{Binding Description}" TextTrimming="CharacterEllipsis"
+                             IsVisible="{Binding Description, Converter={x:Static ObjectConverters.IsNotNull}}" />
+                </StackPanel>
+                <StackPanel Grid.Column="2" Spacing="3" HorizontalAlignment="Right" Margin="12,0,4,0">
+                  <Border Classes="badge" HorizontalAlignment="Right"
+                          Classes.native="{Binding IsNative}" Classes.backward="{Binding IsBackward}"
+                          Classes.unrestricted="{Binding IsUnrestricted}" Classes.incompatible="{Binding IsIncompatible}"
+                          Classes.unknown="{Binding IsUnknown}" Classes.pending="{Binding IsPending}"
+                          IsVisible="{Binding StatusText, Converter={x:Static ObjectConverters.IsNotNull}}">
+                    <TextBlock Text="{Binding StatusText}" />
+                  </Border>
+                  <TextBlock Classes="muted" FontSize="12" Text="{Binding Downloads}" HorizontalAlignment="Right" />
+                  <TextBlock FontSize="12" Text="{Binding InstalledText}" HorizontalAlignment="Right"
+                             IsVisible="{Binding InstalledText, Converter={x:Static ObjectConverters.IsNotNull}}" />
+                  <TextBlock Classes="update" FontSize="12" Text="{Binding UpdateText}" HorizontalAlignment="Right"
+                             IsVisible="{Binding UpdateText, Converter={x:Static ObjectConverters.IsNotNull}}" />
+                </StackPanel>
+              </Grid>
+            </DataTemplate>
+          </ListBox.ItemTemplate>
+        </ListBox>
+        <TextBlock Classes="muted" Text="{x:Static r:Strings.Cat_Empty}" IsVisible="{Binding IsEmpty}"
+                   HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <TextBlock Classes="muted" Text="{x:Static r:Strings.Cat_NoCache}" IsVisible="{Binding IsCacheEmpty}"
+                   HorizontalAlignment="Center" VerticalAlignment="Center" />
+      </Panel>
+
+      <!-- Карточка выбранного пакета (FR-30, FR-31, FR-33). -->
+      <Border Grid.Column="1" Margin="12,0,0,0" BorderBrush="{DynamicResource DividerBrush}" BorderThickness="1" CornerRadius="6" Padding="16,16,8,16">
+        <Panel>
+          <TextBlock Classes="muted" Text="{x:Static r:Strings.Cat_DetailsHint}" TextWrapping="Wrap" IsVisible="{Binding !HasSelection}" />
+          <v:PackageCardView x:Name="Card" DataContext="{Binding Card}"
+                             IsVisible="{Binding Item, Converter={x:Static ObjectConverters.IsNotNull}}" />
+        </Panel>
+      </Border>
+    </Grid>
+  </DockPanel>
+</UserControl>

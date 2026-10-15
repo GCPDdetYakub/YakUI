@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+
+  <data name="AppTitle" xml:space="preserve"><value>YakUI</value></data>
+
+  <data name="Nav_Catalog" xml:space="preserve"><value>Каталог</value></data>
+  <data name="Nav_Installed" xml:space="preserve"><value>Установленные</value></data>
+  <data name="Nav_Downloads" xml:space="preserve"><value>Загрузки</value></data>
+  <data name="Nav_Sources" xml:space="preserve"><value>Источники</value></data>
+  <data name="Nav_Profiles" xml:space="preserve"><value>Наборы</value></data>
+  <data name="Nav_Journal" xml:space="preserve"><value>Журнал</value></data>
+  <data name="Nav_Settings" xml:space="preserve"><value>Настройки</value></data>
+
+  <data name="Target_Label" xml:space="preserve"><value>Rhino</value></data>
+  <data name="Target_GroupInstalled" xml:space="preserve"><value>Установленные</value></data>
+  <data name="Target_GroupNotInstalled" xml:space="preserve"><value>Не установлены</value></data>
+  <data name="Target_Any" xml:space="preserve"><value>Любая версия (без фильтра)</value></data>
+  <data name="Target_ServiceRelease" xml:space="preserve"><value>Сервис-релиз</value></data>
+  <data name="Target_ServiceReleaseLatest" xml:space="preserve"><value>последний</value></data>
+  <data name="Target_NotInstalledSuffix" xml:space="preserve"><value>не установлен</value></data>
+  <data name="Target_TooltipProfile" xml:space="preserve"><value>Профиль пакетов</value></data>
+  <data name="Target_TooltipGhLibraries" xml:space="preserve"><value>Grasshopper Libraries</value></data>
+  <data name="Target_TooltipYak" xml:space="preserve"><value>Встроенный yak</value></data>
+  <data name="Target_TooltipNoYak" xml:space="preserve"><value>нет</value></data>
+  <data name="Target_None" xml:space="preserve"><value>Rhino не найден</value></data>
+
+  <data name="Caps_Installed" xml:space="preserve"><value>Доступно всё: просмотр, скачивание, установка в профиль Rhino и в свою папку.</value></data>
+  <data name="Caps_NotInstalled" xml:space="preserve"><value>Rhino не установлен: просмотр, скачивание .yak, установка в свою папку. Установка в профиль Rhino недоступна.</value></data>
+  <data name="Caps_Any" xml:space="preserve"><value>Фильтр совместимости выключен: только просмотр и скачивание.</value></data>
+  <data name="Caps_FilterRelease" xml:space="preserve"><value>Фильтр совместимости: Rhino {0}</value></data>
+
+  <data name="Status_Ready" xml:space="preserve"><value>Готово</value></data>
+  <data name="Status_Cancel" xml:space="preserve"><value>Отменить</value></data>
+  <data name="Status_Dismiss" xml:space="preserve"><value>Скрыть</value></data>
+  <data name="Status_Failed" xml:space="preserve"><value>Ошибка: {0}</value></data>
+  <data name="Status_Cancelled" xml:space="preserve"><value>Отменено</value></data>
+
+  <data name="Op_Startup" xml:space="preserve"><value>Поиск Rhino и yak-инструментов</value></data>
+  <data name="Op_CheckYak" xml:space="preserve"><value>Проверка yak-инструментов</value></data>
+  <data name="Op_Crawl" xml:space="preserve"><value>Построение кэша каталога</value></data>
+  <data name="Op_CrawlDetail" xml:space="preserve"><value>{0} из {1}, потоков {2}</value></data>
+  <data name="Op_CrawlThrottled" xml:space="preserve"><value>сервер просит снизить нагрузку — пауза</value></data>
+
+  <data name="Age_JustNow" xml:space="preserve"><value>только что</value></data>
+  <data name="Age_Minutes" xml:space="preserve"><value>{0} мин назад</value></data>
+  <data name="Age_Hours" xml:space="preserve"><value>{0} ч назад</value></data>
+  <data name="Catalog_StatusEmpty" xml:space="preserve"><value>Каталог не загружен</value></data>
+  <data name="Catalog_StatusBuilding" xml:space="preserve"><value>Каталог: {0} из {1} · совместимость уточняется</value></data>
+  <data name="Catalog_StatusReady" xml:space="preserve"><value>Каталог: {0} пакетов · обновлён {1}</value></data>
+  <data name="Catalog_StatusOffline" xml:space="preserve"><value>Каталог офлайн · данные от {0}</value></data>
+  <data name="Catalog_StatusPending" xml:space="preserve"><value>Каталог: {0} пакетов · уточняется {1}</value></data>
+
+  <data name="Placeholder_Step" xml:space="preserve"><value>Экран появится на шаге {0}.</value></data>
+  <data name="Placeholder_Stage" xml:space="preserve"><value>Экран появится на этапе {0}.</value></data>
+  <data name="Placeholder_CurrentTarget" xml:space="preserve"><value>Выбранная цель</value></data>
+  <data name="Cat_SearchWatermark" xml:space="preserve"><value>Поиск по имени, описанию, ключевым словам и авторам</value></data>
+  <data name="Cat_Sort" xml:space="preserve"><value>Сортировка</value></data>
+  <data name="Cat_SortName" xml:space="preserve"><value>по имени</value></data>
+  <data name="Cat_SortDownloads" xml:space="preserve"><value>по загрузкам (всего)</value></data>
+  <data name="Cat_SortMonth" xml:space="preserve"><value>по загрузкам за месяц</value></data>
+  <data name="Cat_SortUpdated" xml:space="preserve"><value>по дате обновления</value></data>
+  <data name="Cat_SortCreated" xml:space="preserve"><value>по дате создания</value></data>
+  <data name="Cat_Descending" xml:space="preserve"><value>по убыванию</value></data>
+  <data name="Cat_Statuses" xml:space="preserve"><value>Совместимость:</value></data>
+  <data name="Cat_Platform" xml:space="preserve"><value>Платформа:</value></data>
+  <data name="Cat_HidePrerelease" xml:space="preserve"><value>Скрыть пре-релизы</value></data>
+  <data name="Cat_OnlyInstalled" xml:space="preserve"><value>только установленные</value></data>
+  <data name="Cat_OnlyWithUpdate" xml:space="preserve"><value>есть обновление</value></data>
+  <data name="Cat_FilterOff" xml:space="preserve"><value>Выбрана «Любая версия»: фильтр совместимости выключен.</value></data>
+  <data name="Cat_Count" xml:space="preserve"><value>Показано {0} из {1}</value></data>
+  <data name="Cat_CountPending" xml:space="preserve"><value>Показано {0} из {1} · совместимость уточняется у {2}</value></data>
+  <data name="Cat_Empty" xml:space="preserve"><value>Ничего не найдено. Измените запрос или фильтры.</value></data>
+  <data name="Cat_NoCache" xml:space="preserve"><value>Каталог ещё не загружен — идёт построение кэша.</value></data>
+  <data name="Cat_Installed" xml:space="preserve"><value>установлен {0}</value></data>
+  <data name="Cat_UpdateTo" xml:space="preserve"><value>обновление → {0}</value></data>
+  <data name="Cat_Downloads" xml:space="preserve"><value>{0} загрузок</value></data>
+  <data name="Cat_MacOnlyBadge" xml:space="preserve"><value>только Mac</value></data>
+  <data name="Cat_Prerelease" xml:space="preserve"><value>prerelease</value></data>
+  <data name="Cat_DetailsHint" xml:space="preserve"><value>Выберите пакет, чтобы увидеть версии, дистрибутивы и содержимое архива.</value></data>
+  <data name="Cat_Authors" xml:space="preserve"><value>Авторы</value></data>
+  <data name="Cat_VersionForTarget" xml:space="preserve"><value>Версия для цели</value></data>
+  <data name="Cat_Updated" xml:space="preserve"><value>Обновлён</value></data>
+  <data name="Cat_Created" xml:space="preserve"><value>Создан</value></data>
+  <data name="Cat_DownloadsTotal" xml:space="preserve"><value>Загрузки: всего / за месяц</value></data>
+  <data name="Cat_Keywords" xml:space="preserve"><value>Ключевые слова</value></data>
+  <data name="Cat_VersionsCount" xml:space="preserve"><value>Версий в каталоге</value></data>
+
+  <data name="Status_Native" xml:space="preserve"><value>Нативный</value></data>
+  <data name="Status_Backward" xml:space="preserve"><value>Совместимый снизу</value></data>
+  <data name="Status_Unrestricted" xml:space="preserve"><value>Без ограничений</value></data>
+  <data name="Status_Incompatible" xml:space="preserve"><value>Несовместимый</value></data>
+  <data name="Status_Unknown" xml:space="preserve"><value>Неизвестно</value></data>
+  <data name="Status_Pending" xml:space="preserve"><value>уточняется</value></data>
+  <data name="Status_NoFilter" xml:space="preserve"><value>—</value></data>
+  <data name="Status_BackwardHint" xml:space="preserve"><value>Собран под более старую версию Rhino; работа не гарантируется.</value></data>
+  <data name="Card_Homepage" xml:space="preserve"><value>Сайт пакета</value></data>
+  <data name="Card_NoHomepage" xml:space="preserve"><value>Сайт не указан</value></data>
+  <data name="Card_Owners" xml:space="preserve"><value>Владельцы</value></data>
+  <data name="Card_OwnersUnavailable" xml:space="preserve"><value>недоступно (сервер не ответил)</value></data>
+  <data name="Card_Downloads" xml:space="preserve"><value>Загрузки</value></data>
+  <data name="Card_DownloadsValue" xml:space="preserve"><value>всего {0} · день {1} · неделя {2} · месяц {3}</value></data>
+  <data name="Card_Dependencies" xml:space="preserve"><value>Зависимости</value></data>
+  <data name="Card_NoDependencies" xml:space="preserve"><value>нет</value></data>
+  <data name="Card_Versions" xml:space="preserve"><value>Версии</value></data>
+  <data name="Card_Distributions" xml:space="preserve"><value>Дистрибутивы версии {0}</value></data>
+  <data name="Card_BestDistribution" xml:space="preserve"><value>будет установлен</value></data>
+  <data name="Card_Contents" xml:space="preserve"><value>Содержимое архива</value></data>
+  <data name="Card_Inspecting" xml:space="preserve"><value>Читаю оглавление архива…</value></data>
+  <data name="Card_InspectFailed" xml:space="preserve"><value>Не удалось прочитать архив: {0}</value></data>
+  <data name="Card_ContentKind" xml:space="preserve"><value>Тип</value></data>
+  <data name="Card_Frameworks" xml:space="preserve"><value>Таргеты .NET</value></data>
+  <data name="Card_RhinoPlugins" xml:space="preserve"><value>Плагины Rhino (.rhp)</value></data>
+  <data name="Card_GhAssemblies" xml:space="preserve"><value>Сборки Grasshopper</value></data>
+  <data name="Card_Files" xml:space="preserve"><value>Файлов</value></data>
+  <data name="Card_ArchiveSize" xml:space="preserve"><value>Размер</value></data>
+  <data name="Card_ArchiveSizeValue" xml:space="preserve"><value>{0} (распаковано {1}); прочитано {2}</value></data>
+  <data name="Card_UnsafePaths" xml:space="preserve"><value>Опасные пути в архиве: {0}</value></data>
+  <data name="Card_ManifestMissing" xml:space="preserve"><value>Манифест: {0}</value></data>
+  <data name="Card_Kind_None" xml:space="preserve"><value>без бинарников</value></data>
+  <data name="Card_Kind_Rhino" xml:space="preserve"><value>плагин Rhino</value></data>
+  <data name="Card_Kind_Grasshopper" xml:space="preserve"><value>Grasshopper</value></data>
+  <data name="Card_Kind_Mixed" xml:space="preserve"><value>Rhino + Grasshopper</value></data>
+  <data name="Card_Install" xml:space="preserve"><value>Установить</value></data>
+  <data name="Card_Download" xml:space="preserve"><value>Скачать .yak</value></data>
+  <data name="Card_Food4Rhino" xml:space="preserve"><value>Найти на Food4Rhino</value></data>
+  <data name="Card_Loading" xml:space="preserve"><value>Загружаю версии…</value></data>
+  <data name="Card_LoadFailed" xml:space="preserve"><value>Версии недоступны: {0}</value></data>
+  <data name="Card_Offline" xml:space="preserve"><value>Сервер недоступен — данные из кэша.</value></data>
+  <data name="Inst_Refresh" xml:space="preserve"><value>Обновить</value></data>
+  <data name="Inst_Filter" xml:space="preserve"><value>Фильтр по имени</value></data>
+  <data name="Inst_NotInstalledTarget" xml:space="preserve"><value>Rhino {0} не установлен на этом компьютере — показывать нечего. Выберите установленный Rhino или «Любая версия» для сводки.</value></data>
+  <data name="Inst_Count" xml:space="preserve"><value>Пакетов: {0}</value></data>
+  <data name="Inst_CountWithUpdates" xml:space="preserve"><value>Пакетов: {0} · с обновлением: {1}</value></data>
+  <data name="Inst_Loading" xml:space="preserve"><value>Читаю профиль пакетов и yak list…</value></data>
+  <data name="Inst_Empty" xml:space="preserve"><value>Пакетов не найдено.</value></data>
+  <data name="Inst_Running" xml:space="preserve"><value>{0} запущен ({1}): изменения применятся после перезапуска.</value></data>
+  <data name="Inst_RunningInside" xml:space="preserve"><value>Rhino.Inside в {0}</value></data>
+  <data name="Inst_YakListProblem" xml:space="preserve"><value>yak list недоступен: {0} Показано только содержимое профиля.</value></data>
+  <data name="Inst_ModeStandard" xml:space="preserve"><value>стандартный</value></data>
+  <data name="Inst_SourceUser" xml:space="preserve"><value>профиль пользователя</value></data>
+  <data name="Inst_SourceAllUsers" xml:space="preserve"><value>для всех (только чтение)</value></data>
+  <data name="Inst_StatusActive" xml:space="preserve"><value>активен</value></data>
+  <data name="Inst_StatusPendingRestart" xml:space="preserve"><value>ожидает перезапуска</value></data>
+  <data name="Inst_StatusUnknown" xml:space="preserve"><value>версия не определена</value></data>
+  <data name="Inst_Inactive" xml:space="preserve"><value>неактивные: {0}</value></data>
+  <data name="Inst_MissingInYakList" xml:space="preserve"><value>нет в yak list</value></data>
+  <data name="Inst_MissingInProfile" xml:space="preserve"><value>есть в yak list ({0}), нет в профиле</value></data>
+  <data name="Inst_VersionMismatch" xml:space="preserve"><value>yak list: {0}</value></data>
+  <data name="Inst_NotInCatalog" xml:space="preserve"><value>нет в каталоге</value></data>
+  <data name="Inst_OpenFolder" xml:space="preserve"><value>Открыть папку</value></data>
+  <data name="Inst_ShowInCatalog" xml:space="preserve"><value>Показать в каталоге</value></data>
+  <data name="Inst_Remove" xml:space="preserve"><value>Удалить</value></data>
+  <data name="Inst_ColName" xml:space="preserve"><value>Пакет</value></data>
+  <data name="Inst_ColVersion" xml:space="preserve"><value>Версия</value></data>
+  <data name="Inst_ColSource" xml:space="preserve"><value>Источник</value></data>
+  <data name="Inst_ColKind" xml:space="preserve"><value>Тип</value></data>
+  <data name="Inst_ColStatus" xml:space="preserve"><value>Статус</value></data>
+  <data name="Inst_ColUpdate" xml:space="preserve"><value>Обновление</value></data>
+  <data name="Inst_AllTargets" xml:space="preserve"><value>Сводка по всем установленным Rhino</value></data>
+  <data name="Dlg_Cancel" xml:space="preserve"><value>Отмена</value></data>
+  <data name="Dl_Folder" xml:space="preserve"><value>Папка загрузок: {0}</value></data>
+  <data name="Dl_OpenFolder" xml:space="preserve"><value>Открыть папку</value></data>
+  <data name="Dl_Queue" xml:space="preserve"><value>Очередь</value></data>
+  <data name="Dl_QueueEmpty" xml:space="preserve"><value>Очередь пуста. Скачать .yak можно из карточки пакета в каталоге.</value></data>
+  <data name="Dl_ClearFinished" xml:space="preserve"><value>Убрать завершённые</value></data>
+  <data name="Dl_Library" xml:space="preserve"><value>Библиотека .yak</value></data>
+  <data name="Dl_LibraryEmpty" xml:space="preserve"><value>Скачанных файлов нет.</value></data>
+  <data name="Dl_Cancel" xml:space="preserve"><value>Отменить</value></data>
+  <data name="Dl_Retry" xml:space="preserve"><value>Повторить</value></data>
+  <data name="Dl_Reveal" xml:space="preserve"><value>Показать в папке</value></data>
+  <data name="Dl_Delete" xml:space="preserve"><value>Удалить файл</value></data>
+  <data name="Dl_DeleteTitle" xml:space="preserve"><value>Удаление файла</value></data>
+  <data name="Dl_DeleteConfirm" xml:space="preserve"><value>Удалить {0} из папки загрузок? Установленные пакеты это не затронет.</value></data>
+  <data name="Dl_State_Queued" xml:space="preserve"><value>в очереди</value></data>
+  <data name="Dl_State_Running" xml:space="preserve"><value>скачивается</value></data>
+  <data name="Dl_State_Verifying" xml:space="preserve"><value>проверка ZIP и SHA-256</value></data>
+  <data name="Dl_State_Completed" xml:space="preserve"><value>готово</value></data>
+  <data name="Dl_State_Already" xml:space="preserve"><value>уже скачан</value></data>
+  <data name="Dl_State_Failed" xml:space="preserve"><value>ошибка</value></data>
+  <data name="Dl_State_Cancelled" xml:space="preserve"><value>отменено</value></data>
+  <data name="Dl_Missing" xml:space="preserve"><value>файл удалён вне YakUI</value></data>
+  <data name="Card_DownloadAll" xml:space="preserve"><value>Скачать все дистрибутивы</value></data>
+  <data name="Card_DownloadQueued" xml:space="preserve"><value>Добавлено в загрузки: {0}</value></data>
+  <data name="Card_NothingToDownload" xml:space="preserve"><value>Нет подходящего дистрибутива для скачивания.</value></data>
+  <data name="Card_FileGone" xml:space="preserve"><value>Файл удалён с сервера.</value></data>
+  <data name="Card_FileGoneBadge" xml:space="preserve"><value>файл удалён с сервера</value></data>
+  <data name="Card_InstallFromDownloads" xml:space="preserve"><value>Файл есть в папке загрузок — установка из него возможна.</value></data>
+  <data name="Dl_ServerDate" xml:space="preserve"><value>Дата файла на сервере: {0}</value></data>
+  <data name="Dl_ServerDateUnknown" xml:space="preserve"><value>Дата файла на сервере неизвестна</value></data>
+  <data name="Dl_Downloaded" xml:space="preserve"><value>скачан {0}</value></data>
+  <data name="Card_Installing" xml:space="preserve"><value>Установка {0} {1}…</value></data>
+  <data name="Card_Installed" xml:space="preserve"><value>{0} {1} установлен ({2}).</value></data>
+  <data name="Card_InstallMethodYak" xml:space="preserve"><value>через yak</value></data>
+  <data name="Card_InstallMethodBuiltIn" xml:space="preserve"><value>встроенным установщиком</value></data>
+  <data name="Card_InstallRestart" xml:space="preserve"><value>Rhino запущен — пакет загрузится после перезапуска.</value></data>
+  <data name="Card_InstallFailed" xml:space="preserve"><value>Установка не выполнена: {0}</value></data>
+  <data name="Card_InstallTargetHint" xml:space="preserve"><value>Установка доступна только в установленную версию Rhino, выбранную в списке целей.</value></data>
+  <data name="Un_Title" xml:space="preserve"><value>Удаление пакета</value></data>
+  <data name="Un_Button" xml:space="preserve"><value>Удалить</value></data>
+  <data name="Un_Confirm" xml:space="preserve"><value>Удалить {0} из {1}?</value></data>
+  <data name="Un_AllVersions" xml:space="preserve"><value>Будут удалены все версии: {0}.</value></data>
+  <data name="Un_Running" xml:space="preserve"><value>{0} запущен: изменения применятся после перезапуска; если файлы заняты, удаление не выполнится.</value></data>
+  <data name="Un_Done" xml:space="preserve"><value>{0} удалён из {1} ({2}).</value></data>
+  <data name="Un_MethodBuiltIn" xml:space="preserve"><value>без yak, по реестру YakUI</value></data>
+  <data name="Un_Restart" xml:space="preserve"><value>Rhino запущен — изменения применятся после перезапуска.</value></data>
+  <data name="Un_Failed" xml:space="preserve"><value>Удаление не выполнено: {0}</value></data>
+  <data name="Un_Removing" xml:space="preserve"><value>Удаление {0} из {1}</value></data>
+  <data name="Jr_Ms" xml:space="preserve"><value>{0} мс</value></data>
+  <data name="Jr_AllKinds" xml:space="preserve"><value>Все операции</value></data>
+  <data name="Jr_ReadFailed" xml:space="preserve"><value>Не удалось прочитать журнал: {0}</value></data>
+  <data name="Jr_Count" xml:space="preserve"><value>Записей: {0} из {1}</value></data>
+  <data name="Jr_Empty" xml:space="preserve"><value>Журнал пуст.</value></data>
+  <data name="Jr_Filter" xml:space="preserve"><value>Поиск по действию, результату, выводу</value></data>
+  <data name="Jr_OnlyErrors" xml:space="preserve"><value>Только ошибки</value></data>
+  <data name="Jr_OpenLogs" xml:space="preserve"><value>Папка логов</value></data>
+  <data name="Jr_SelectHint" xml:space="preserve"><value>Выберите запись, чтобы увидеть подробности и вывод yak.</value></data>
+  <data name="Jr_ColTime" xml:space="preserve"><value>Время</value></data>
+  <data name="Jr_ColKind" xml:space="preserve"><value>Вид</value></data>
+  <data name="Jr_ColAction" xml:space="preserve"><value>Действие</value></data>
+  <data name="Jr_ColResult" xml:space="preserve"><value>Результат</value></data>
+  <data name="Jr_ColCode" xml:space="preserve"><value>Код</value></data>
+  <data name="Jr_ColDuration" xml:space="preserve"><value>Длит.</value></data>
+  <data name="Set_Theme" xml:space="preserve"><value>Тема оформления</value></data>
+  <data name="Set_ThemeSystem" xml:space="preserve"><value>Как в системе</value></data>
+  <data name="Set_ThemeLight" xml:space="preserve"><value>Светлая</value></data>
+  <data name="Set_ThemeDark" xml:space="preserve"><value>Тёмная</value></data>
+  <data name="Set_ThemeHint" xml:space="preserve"><value>«Как в системе» следует теме Windows и меняется вместе с ней. Применяется сразу.</value></data>
+  <data name="Set_Downloads" xml:space="preserve"><value>Папка загрузок</value></data>
+  <data name="Set_DownloadsDefault" xml:space="preserve"><value>(по умолчанию)</value></data>
+  <data name="Set_Change" xml:space="preserve"><value>Изменить…</value></data>
+  <data name="Set_Reset" xml:space="preserve"><value>Сбросить</value></data>
+  <data name="Set_DownloadsHint" xml:space="preserve"><value>Сюда скачиваются файлы .yak. Уже скачанные файлы остаются на прежнем месте и по-прежнему видны на экране «Загрузки».</value></data>
+  <data name="Set_DownloadsFailed" xml:space="preserve"><value>Папка не изменена: {0}</value></data>
+  <data name="Set_DownloadsChanged" xml:space="preserve"><value>Папка загрузок изменена.</value></data>
+  <data name="Set_PickDownloads" xml:space="preserve"><value>Папка загрузок</value></data>
+  <data name="Set_Yak" xml:space="preserve"><value>yak-инструменты</value></data>
+  <data name="Set_YakHint" xml:space="preserve"><value>yak привязан к одной версии Rhino (по «yak list»). Для каждой версии используется самый новый пригодный yak, если не закреплён другой. Новые сборки yak ищутся на files.mcneel.com: скачанная сборка проверяется и ставится рядом, переключение — только когда нет активных операций.</value></data>
+  <data name="Set_YakPin" xml:space="preserve"><value>Закрепить для своей версии Rhino</value></data>
+  <data name="Set_YakUnpin" xml:space="preserve"><value>Снять закрепление</value></data>
+  <data name="Set_YakAdd" xml:space="preserve"><value>Указать yak.exe…</value></data>
+  <data name="Set_YakRemove" xml:space="preserve"><value>Убрать указанный вручную</value></data>
+  <data name="Set_YakConfirm" xml:space="preserve"><value>Доверять неподписанному…</value></data>
+  <data name="Set_YakOpenFolder" xml:space="preserve"><value>Открыть папку</value></data>
+  <data name="Set_YakRefresh" xml:space="preserve"><value>Перепроверить</value></data>
+  <data name="Set_PickYak" xml:space="preserve"><value>Выберите yak.exe</value></data>
+  <data name="Set_OriginBuiltIn" xml:space="preserve"><value>встроенный</value></data>
+  <data name="Set_OriginDownloaded" xml:space="preserve"><value>скачанный</value></data>
+  <data name="Set_OriginManual" xml:space="preserve"><value>указан вручную</value></data>
+  <data name="Set_YakUnusable" xml:space="preserve"><value>Не используется: {0}</value></data>
+  <data name="Set_YakPinned" xml:space="preserve"><value>Закреплён и используется</value></data>
+  <data name="Set_YakSelected" xml:space="preserve"><value>Используется</value></data>
+  <data name="Set_YakUsable" xml:space="preserve"><value>Пригоден</value></data>
+  <data name="Set_YakNoBinding" xml:space="preserve"><value>привязка не определена</value></data>
+  <data name="Set_YakNone" xml:space="preserve"><value>Пригодного yak нет: установка идёт встроенным установщиком YakUI, удаление — только поставленного YakUI.</value></data>
+  <data name="Set_YakUsesNewest" xml:space="preserve"><value>Используется самый новый пригодный: {0} — {1}</value></data>
+  <data name="Set_YakUsesPinned" xml:space="preserve"><value>Используется закреплённый: {0} — {1}</value></data>
+  <data name="Set_YakPinUnusable" xml:space="preserve"><value>Закреплённый {0} сейчас непригоден.</value></data>
+  <data name="Set_YakUnbound" xml:space="preserve"><value>Привязка не определена</value></data>
+  <data name="Set_YakUnboundHint" xml:space="preserve"><value>Эти yak не используются: подпись не принята, нужна проверка или «yak list» не сообщил каталог пакетов.</value></data>
+  <data name="Set_YakPinDone" xml:space="preserve"><value>yak {0} закреплён для Rhino {1}.</value></data>
+  <data name="Set_YakUnpinDone" xml:space="preserve"><value>Для Rhino {0} снова выбирается самый новый пригодный yak.</value></data>
+  <data name="Set_YakConfirmTitle" xml:space="preserve"><value>Неподписанный yak</value></data>
+  <data name="Set_YakConfirmUnsigned" xml:space="preserve"><value>Файл {0} не подписан Robert McNeel &amp; Associates.
+SHA-256: {1}
+
+YakUI будет запускать именно этот файл (по SHA-256). Доверять ему?</value></data>
+  <data name="Set_YakConfirmButton" xml:space="preserve"><value>Доверять</value></data>
+  <data name="Target_Prerelease" xml:space="preserve"><value>предварительный выпуск</value></data>
+  <data name="Set_DownloadsBusy" xml:space="preserve"><value>идут загрузки — дождитесь их окончания.</value></data>
+  <data name="Card_GhUserObjects" xml:space="preserve"><value>Пользовательские объекты (.ghuser)</value></data>
+  <data name="Card_GhDefinitions" xml:space="preserve"><value>Определения (.gh, .ghx)</value></data>
+  <data name="Card_FilesCount" xml:space="preserve"><value>{0} файлов</value></data>
+  <data name="Net_Title" xml:space="preserve"><value>Сеть</value></data>
+  <data name="Net_ModeSystem" xml:space="preserve"><value>Системный (как в Windows)</value></data>
+  <data name="Net_ModeNone" xml:space="preserve"><value>Без прокси</value></data>
+  <data name="Net_ModeManual" xml:space="preserve"><value>Вручную</value></data>
+  <data name="Net_Apply" xml:space="preserve"><value>Применить</value></data>
+  <data name="Net_Check" xml:space="preserve"><value>Проверить соединение</value></data>
+  <data name="Net_Checking" xml:space="preserve"><value>Проверка…</value></data>
+  <data name="Net_Applied" xml:space="preserve"><value>Настройки сети применены: новые запросы идут по выбранному режиму.</value></data>
+  <data name="Net_BadAddress" xml:space="preserve"><value>Адрес прокси: «хост:порт» или «socks5://хост:порт».</value></data>
+  <data name="Net_StepOk" xml:space="preserve"><value>✓ {0}: {1}</value></data>
+  <data name="Net_StepFailed" xml:space="preserve"><value>✗ {0}: {1}</value></data>
+  <data name="Net_Hint" xml:space="preserve"><value>Режим применяется сразу ко всем запросам YakUI (каталог, файлы .yak, иконки) и передаётся yak.exe через переменные окружения. Логин и пароль прокси не поддерживаются. yak из Rhino 7 работает на .NET Framework и SOCKS может не поддерживать; для установки это не важно — yak ставит пакет из файла, уже скачанного YakUI.</value></data>
+  <data name="Lc_AutoUpdateOn" xml:space="preserve"><value>{0}: в «Диспетчере пакетов» Rhino включено «Automatically update packages when Rhino starts» — при запуске Rhino сам обновит пакеты, в том числе закреплённые в YakUI.</value></data>
+  <data name="Lc_ConfirmChange" xml:space="preserve"><value>Сменить версию {0}: {1} → {2} в {3}?</value></data>
+  <data name="Lc_Newest" xml:space="preserve"><value>самую новую подходящую</value></data>
+  <data name="Lc_OldRemoved" xml:space="preserve"><value>Сначала ставится новая версия; после проверки папка версии {0} удаляется. При ошибке остаётся {0}.</value></data>
+  <data name="Lc_PinMoves" xml:space="preserve"><value>Закрепление ({0}) перейдёт на новую версию.</value></data>
+  <data name="Lc_ChangeTitle" xml:space="preserve"><value>Смена версии</value></data>
+  <data name="Lc_ChangeButton" xml:space="preserve"><value>Сменить</value></data>
+  <data name="Lc_Changed" xml:space="preserve"><value>{0}: {1} → {2} ({3}).</value></data>
+  <data name="Lc_ChangeFailed" xml:space="preserve"><value>Смена версии не выполнена: {0}</value></data>
+  <data name="Lc_PinTitle" xml:space="preserve"><value>Закрепить версию</value></data>
+  <data name="Lc_PinButton" xml:space="preserve"><value>Закрепить</value></data>
+  <data name="Lc_PinAutoUpdateWarning" xml:space="preserve"><value>Закрепить {0} {1} в {2}?
+
+В «Диспетчере пакетов» Rhino включено «Automatically update packages when Rhino starts»: при следующем запуске Rhino может сам обновить пакет, и закрепление нарушится. YakUI это заметит и покажет «изменено вне YakUI». Чтобы закрепление держалось, снимите эту галочку в Rhino (_PackageManager).</value></data>
+  <data name="Lc_Pinned" xml:space="preserve"><value>{0} {1} закреплён: «Обновить всё» его пропускает.</value></data>
+  <data name="Lc_Unpinned" xml:space="preserve"><value>{0}: закрепление снято.</value></data>
+  <data name="Lc_NothingToUpdate" xml:space="preserve"><value>Обновлять нечего.</value></data>
+  <data name="Lc_NothingChecked" xml:space="preserve"><value>Отметьте пакеты галочками.</value></data>
+  <data name="Lc_PlanPinned" xml:space="preserve"><value>• {0} {1} — закреплён, пропускается</value></data>
+  <data name="Lc_PlanItem" xml:space="preserve"><value>• {0}: {1} → {2}</value></data>
+  <data name="Lc_ConfirmAll" xml:space="preserve"><value>Обновить пакеты в {0}? Каждый пакет: сначала новая версия, затем удаление прежней; при ошибке у пакета остаётся прежняя.</value></data>
+  <data name="Lc_AllTitle" xml:space="preserve"><value>Обновление пакетов</value></data>
+  <data name="Lc_AllButton" xml:space="preserve"><value>Обновить</value></data>
+  <data name="Lc_Summary" xml:space="preserve"><value>Обновлено: {0}, пропущено: {1}, ошибок: {2}.</value></data>
+  <data name="Lc_LineUpdated" xml:space="preserve"><value>✓ {0}: {1} → {2}</value></data>
+  <data name="Lc_LineSkipped" xml:space="preserve"><value>– {0}: {1}</value></data>
+  <data name="Lc_LineCancelled" xml:space="preserve"><value>– {0}: отменено</value></data>
+  <data name="Lc_LineFailed" xml:space="preserve"><value>✗ {0}: {1}</value></data>
+  <data name="Lc_PinMark" xml:space="preserve"><value>📌 закреплена {0}</value></data>
+  <data name="Lc_PinStale" xml:space="preserve"><value>📌 закреплена {0}, активна {1} — изменено вне YakUI</value></data>
+  <data name="Lc_Update" xml:space="preserve"><value>Обновить</value></data>
+  <data name="Lc_PinToggle" xml:space="preserve"><value>Закрепить / открепить</value></data>
+  <data name="Lc_UpdateAll" xml:space="preserve"><value>Обновить всё</value></data>
+  <data name="Lc_UpdateChecked" xml:space="preserve"><value>Обновить отмеченные</value></data>
+  <data name="Lc_UninstallChecked" xml:space="preserve"><value>Удалить отмеченные</value></data>
+  <data name="Lc_ChangeVersion" xml:space="preserve"><value>Сменить на эту версию</value></data>
+  <data name="Lc_Updating" xml:space="preserve"><value>Обновление пакетов в {0}</value></data>
+  <data name="Lc_Changing" xml:space="preserve"><value>Смена версии {0} → {1}</value></data>
+  <data name="Un_ConfirmMany" xml:space="preserve"><value>Удалить {0} пакетов из {1}? Будут удалены все версии:</value></data>
+  <data name="Card_Pin" xml:space="preserve"><value>Закрепить версию</value></data>
+  <data name="Card_Unpin" xml:space="preserve"><value>Открепить</value></data>
+  <data name="Set_YakCheck" xml:space="preserve"><value>Проверить обновления yak</value></data>
+  <data name="Set_OpenWizard" xml:space="preserve"><value>Мастер первого запуска…</value></data>
+  <data name="Set_YakDownloadVersion" xml:space="preserve"><value>Скачать версию</value></data>
+  <data name="Set_YakDownload" xml:space="preserve"><value>Скачать</value></data>
+  <data name="Set_YakRestore" xml:space="preserve"><value>Вернуть предыдущий yak</value></data>
+  <data name="Set_YakAvailable" xml:space="preserve"><value>Доступна более новая сборка: {0}</value></data>
+  <data name="Set_YakBadVersion" xml:space="preserve"><value>Номер версии yak — например, 0.19.1.</value></data>
+  <data name="Set_YakRestored" xml:space="preserve"><value>Для Rhino {0} закреплён прежний yak: {1}</value></data>
+  <data name="Set_YakOnServer" xml:space="preserve"><value>На files.mcneel.com: {0}</value></data>
+  <data name="Set_YakLineNewer" xml:space="preserve"><value>Rhino {0}: используется {1}, доступна {2}</value></data>
+  <data name="Set_YakLineCurrent" xml:space="preserve"><value>Rhino {0}: используется {1}, новее нет</value></data>
+  <data name="Set_YakDownloaded" xml:space="preserve"><value>yak {0} скачан и проверен ({1}); привязка: Rhino {2}.</value></data>
+  <data name="Set_YakDownloadedSigned" xml:space="preserve"><value>подписан McNeel</value></data>
+  <data name="Set_YakDownloadedUnsigned" xml:space="preserve"><value>без подписи, скачан с files.mcneel.com по HTTPS</value></data>
+  <data name="Set_YakSwitched" xml:space="preserve"><value>Для Rhino {0} теперь используется yak {1}; прежний — {2} («Вернуть предыдущий»).</value></data>
+  <data name="Set_YakNotSelected" xml:space="preserve"><value>Для Rhino {0} по-прежнему используется {1}: он не старше скачанного или закреплён.</value></data>
+  <data name="Set_YakWaiting" xml:space="preserve"><value>Переключение yak — после завершения текущих операций (FR-19).</value></data>
+  <data name="Op_YakCheck" xml:space="preserve"><value>Проверка новых сборок yak</value></data>
+  <data name="Op_YakDownload" xml:space="preserve"><value>Скачивание yak {0}</value></data>
+  <data name="Wiz_Title" xml:space="preserve"><value>Первый запуск YakUI</value></data>
+  <data name="Wiz_Intro" xml:space="preserve"><value>YakUI ставит пакеты через yak.exe той версии Rhino, в которую идёт установка. Ниже — встроенный yak каждой найденной версии Rhino и более новые сборки той же линейки с files.mcneel.com. Скачивание необязательно: мастер можно пропустить и открыть позже в «Настройках».</value></data>
+  <data name="Wiz_Available" xml:space="preserve"><value>Скачать более новую сборку yak {0}</value></data>
+  <data name="Wiz_BuiltIn" xml:space="preserve"><value>Встроенный yak {0}: привязан к Rhino {1}, {2}.</value></data>
+  <data name="Wiz_NoBuiltIn" xml:space="preserve"><value>Встроенного yak.exe нет.</value></data>
+  <data name="Wiz_SignedMcNeel" xml:space="preserve"><value>подписан Robert McNeel &amp; Associates</value></data>
+  <data name="Wiz_NotSigned" xml:space="preserve"><value>подпись не принята</value></data>
+  <data name="Wiz_NoYak" xml:space="preserve"><value>Пригодного yak нет: установка пойдёт встроенным установщиком YakUI без проверки через «yak list», удалять можно только пакеты, поставленные YakUI.</value></data>
+  <data name="Wiz_Checking" xml:space="preserve"><value>Поиск новых сборок yak на files.mcneel.com…</value></data>
+  <data name="Wiz_CheckFailed" xml:space="preserve"><value>Не удалось проверить новые сборки: {0}</value></data>
+  <data name="Wiz_Finish" xml:space="preserve"><value>Готово</value></data>
+  <data name="Wiz_Skip" xml:space="preserve"><value>Пропустить</value></data>
+  <data name="Wiz_NoRhino" xml:space="preserve"><value>Установленные Rhino 6+ не найдены. Каталог, загрузки и инспекция работают и без Rhino.</value></data>
+  <data name="Io_WindowTitle" xml:space="preserve"><value>Установка</value></data>
+  <data name="Io_Title" xml:space="preserve"><value>Установить {0} {1} для {2}</value></data>
+  <data name="Io_ModeStandard" xml:space="preserve"><value>Стандартный профиль</value></data>
+  <data name="Io_ModeStandardHint" xml:space="preserve"><value>Как делает Rhino: {0}. Через yak цели или встроенным установщиком.</value></data>
+  <data name="Io_ModeCustom" xml:space="preserve"><value>Пользовательская папка</value></data>
+  <data name="Io_ModeCustomHint" xml:space="preserve"><value>Раскладка &lt;папка&gt;\&lt;имя&gt;\&lt;версия&gt;. Grasshopper — через ссылку .ghlink, .rhp — только распаковка с инструкцией.</value></data>
+  <data name="Io_ModeUnpack" xml:space="preserve"><value>Только распаковать</value></data>
+  <data name="Io_ModeUnpackHint" xml:space="preserve"><value>Без регистрации в Rhino и Grasshopper — для Rhino.Inside, ручной загрузки и изучения.</value></data>
+  <data name="Io_Folder" xml:space="preserve"><value>Папка</value></data>
+  <data name="Io_OtherFolder" xml:space="preserve"><value>Другая папка…</value></data>
+  <data name="Io_NoRoots" xml:space="preserve"><value>Пользовательские папки добавляются в «Настройках» ⚙ или кнопкой «Другая папка…».</value></data>
+  <data name="Io_GhLinkShared" xml:space="preserve"><value>Ссылка .ghlink в Grasshopper\Libraries действует во всех версиях Rhino с Grasshopper: {0}.</value></data>
+  <data name="Io_GhLinkIncompatible" xml:space="preserve"><value>Дистрибутив {0} собран для Rhino {2}. В {1} он может не загрузиться.</value></data>
+  <data name="Io_Duplicate" xml:space="preserve"><value>{0} уже установлен {1} для этой версии Rhino — возможна двойная загрузка или конфликт сборок (FR-47).</value></data>
+  <data name="Io_InStandard" xml:space="preserve"><value>в стандартный профиль</value></data>
+  <data name="Io_InCustom" xml:space="preserve"><value>по пользовательскому пути</value></data>
+  <data name="Imp_Title" xml:space="preserve"><value>Импорт файла</value></data>
+  <data name="Imp_NoRhiexec" xml:space="preserve"><value>Rhino Installer Engine (rhiexec.exe) не найден: файлы .rhi открываются им.</value></data>
+  <data name="Imp_RhiConfirm" xml:space="preserve"><value>Файл {0} устанавливается штатным Rhino Installer Engine:
+{1}
+
+Версии Rhino выбираются в его окне. YakUI эту установку не отслеживает.</value></data>
+  <data name="Imp_RhiButton" xml:space="preserve"><value>Запустить</value></data>
+  <data name="Imp_RhiLaunched" xml:space="preserve"><value>Запущен Rhino Installer Engine для {0}.</value></data>
+  <data name="Imp_Failed" xml:space="preserve"><value>Импорт {0} не выполнен: {1}</value></data>
+  <data name="Imp_NeedTarget" xml:space="preserve"><value>Выберите в списке Rhino установленную версию — импорт идёт для неё.</value></data>
+  <data name="Imp_Running" xml:space="preserve"><value>Импорт {0}</value></data>
+  <data name="Imp_AddFile" xml:space="preserve"><value>Добавить файл…</value></data>
+  <data name="Imp_DropHint" xml:space="preserve"><value>Перетащите файл .yak, .zip, .gha, .ghuser, .rhp или .rhi в окно, чтобы импортировать.</value></data>
+  <data name="Cp_ConfirmUninstall" xml:space="preserve"><value>Удалить {0} {1}?
+Папка: {2}</value></data>
+  <data name="Cp_ConfirmLinks" xml:space="preserve"><value>Будут удалены созданные YakUI файлы:
+{0}</value></data>
+  <data name="Cp_Uninstalled" xml:space="preserve"><value>{0} удалён ({1}); удалено ссылок и объектов: {2}.</value></data>
+  <data name="Cp_ImportNoUpdate" xml:space="preserve"><value>Импортированный пакет обновляется повторным импортом файла новой версии.</value></data>
+  <data name="Cp_NoVersion" xml:space="preserve"><value>У {0} нет версии, совместимой с {1}.</value></data>
+  <data name="Cp_ModeCustom" xml:space="preserve"><value>пользовательский путь</value></data>
+  <data name="Cp_Installed" xml:space="preserve"><value>{0} {1} установлен в {2}.</value></data>
+  <data name="Cp_Unpacked" xml:space="preserve"><value>{0} {1} распакован в {2} (без регистрации).</value></data>
+  <data name="Cp_GhLink" xml:space="preserve"><value>Grasshopper: ссылка {0}.</value></data>
+  <data name="Cp_UserObjects" xml:space="preserve"><value>Пользовательских объектов скопировано в UserObjects: {0}.</value></data>
+  <data name="Cp_RhpTitle" xml:space="preserve"><value>Rhino-плагин</value></data>
+  <data name="Cp_RhpInstruction" xml:space="preserve"><value>Rhino-плагины распакованы, но YakUI их не регистрирует (FR-44, регистрация — в версии 1.1):
+{0}
+
+Чтобы подключить: перетащите .rhp в окно Rhino или откройте PluginManager → Install… и выберите файл.</value></data>
+  <data name="Cp_OpenFolder" xml:space="preserve"><value>Открыть папку</value></data>
+  <data name="Inst_ModeCustom" xml:space="preserve"><value>пользовательский</value></data>
+  <data name="Inst_ModeUnpack" xml:space="preserve"><value>распакован</value></data>
+  <data name="Inst_SourceCustom" xml:space="preserve"><value>папка: {0}</value></data>
+  <data name="Inst_ImportFile" xml:space="preserve"><value>Импорт: файл</value></data>
+  <data name="Inst_ImportF4R" xml:space="preserve"><value>Импорт: Food4Rhino</value></data>
+  <data name="Inst_Duplicate" xml:space="preserve"><value>стоит и в профиле, и в своей папке — возможна двойная загрузка</value></data>
+  <data name="Set_Roots" xml:space="preserve"><value>Пользовательские папки</value></data>
+  <data name="Set_RootsHint" xml:space="preserve"><value>Папки для установки по пользовательскому пути и «только распаковать», в том числе сетевые. Удаление из списка не удаляет файлы.</value></data>
+  <data name="Set_RootAdd" xml:space="preserve"><value>Добавить папку…</value></data>
+  <data name="Set_RootRemove" xml:space="preserve"><value>Убрать из списка</value></data>
+  <data name="Set_RootAdded" xml:space="preserve"><value>Папка добавлена: {0}</value></data>
+  <data name="Set_RootNotWritable" xml:space="preserve"><value>В папку нельзя записать: {0}</value></data>
+  <data name="Set_PickRoot" xml:space="preserve"><value>Пользовательская папка</value></data>
+  <data name="Io_Runtime" xml:space="preserve"><value>Среда .NET для ссылки Grasshopper</value></data>
+  <data name="Io_RuntimeCore" xml:space="preserve"><value>.NET 7/8 (обычный Rhino 8, Revit 2025+)</value></data>
+  <data name="Io_RuntimeFx" xml:space="preserve"><value>.NET Framework 4.8 (Revit 2021–2024 / Rhino.Inside, Rhino 8 в режиме NetFx)</value></data>
+  <data name="Io_RuntimeCoreWarning" xml:space="preserve"><value>Ссылка на сборку .NET 7/8: в Rhino.Inside в Revit 2021–2024 и в Rhino 8 в режиме NetFx пакет не загрузится.</value></data>
+  <data name="Io_RuntimeFxWarning" xml:space="preserve"><value>Ссылка на сборку .NET Framework 4.8: в обычном Rhino 8 (.NET 7/8) и Revit 2025+ загрузится сборка net48 — работа зависит от пакета.</value></data>
+  <data name="Io_MultiRuntimeHint" xml:space="preserve"><value>У пакета есть сборки и под .NET Framework 4.8, и под .NET 7/8. Рекомендуется стандартный профиль: Rhino сам выберет нужную сборку в каждой среде (обычный Rhino 8, Rhino.Inside в Revit).</value></data>
+  <data name="Io_MultiRuntimeRecommend" xml:space="preserve"><value>Своя папка: одна ссылка .ghlink в общей Grasshopper\Libraries указывает на одну сборку — для всех сред, где запускается Rhino, она не подойдёт. Рекомендуется стандартный профиль.</value></data>
+  <data name="Io_DepsFound" xml:space="preserve"><value>Вместе с файлом скопировать найденные рядом сборки: {0}</value></data>
+  <data name="Io_DepsMissing" xml:space="preserve"><value>Не хватает: {0}. Плагин не загрузится. Импортируйте архив или папку пакета целиком.</value></data>
+  <data name="Imp_AddFolder" xml:space="preserve"><value>Добавить папку…</value></data>
+  <data name="Card_VersionList" xml:space="preserve"><value>Список версий</value></data>
+  <data name="Status_Food4RhinoTip" xml:space="preserve"><value>Поиск выбранного пакета на Food4Rhino или главная страница food4rhino.com</value></data>
+  <data name="Err_NoDistributionUrl" xml:space="preserve"><value>У дистрибутива нет ссылки.</value></data>
+  <data name="Set_Language" xml:space="preserve"><value>Язык интерфейса</value></data>
+  <data name="Set_LanguageSystem" xml:space="preserve"><value>Как в системе</value></data>
+  <data name="Set_LanguageHint" xml:space="preserve"><value>«Как в системе» — русский для русской Windows, иначе английский.</value></data>
+  <data name="Set_LanguageRestart" xml:space="preserve"><value>Язык сменится после перезапуска YakUI.</value></data>
+  <data name="Portable_NotWritable" xml:space="preserve"><value>Переносимая версия YakUI (portable.flag) хранит данные рядом с программой, но в папку {0} нельзя записать.
+
+Переместите папку YakUI туда, где есть право записи (например, в C:\Tools\YakUI или в папку пользователя), или установите YakUI установщиком.</value></data>
+  <data name="Hosts_Open" xml:space="preserve"><value>Открыть hosts</value></data>
+  <data name="Hosts_OpenTip" xml:space="preserve"><value>Открыть системный файл hosts в текстовом редакторе с правами администратора</value></data>
+  <data name="Hosts_Title" xml:space="preserve"><value>Файл hosts</value></data>
+  <data name="Hosts_Indicator" xml:space="preserve"><value>hosts: активно {0} · закомм. {1} · нет {2}</value></data>
+  <data name="Hosts_LineActive" xml:space="preserve"><value>{0} — активна, строка {1}</value></data>
+  <data name="Hosts_LineCommented" xml:space="preserve"><value>{0} — закомментирована, строка {1}</value></data>
+  <data name="Hosts_LineMissing" xml:space="preserve"><value>{0} — отсутствует</value></data>
+  <data name="Hosts_BackupFailed" xml:space="preserve"><value>Не удалось сделать резервную копию hosts: {0}. Файл не открыт.</value></data>
+  <data name="Hosts_ViewOnlyConfirm" xml:space="preserve"><value>Права администратора не получены — сохранить изменения в hosts будет нельзя. Открыть файл только для просмотра?</value></data>
+  <data name="Hosts_ViewOnlyButton" xml:space="preserve"><value>Открыть для просмотра</value></data>
+  <data name="Hosts_OpenFailed" xml:space="preserve"><value>Редактор не запустился: {0}</value></data>
+  <data name="Hosts_NotRestored" xml:space="preserve"><value>hosts не был восстановлен после прошлого сеанса YakUI (сбой или отказ от UAC): в нём остались изменения. Восстановить hosts из резервной копии? Потребуются права администратора.</value></data>
+  <data name="Hosts_RestoreButton" xml:space="preserve"><value>Восстановить</value></data>
+  <data name="Hosts_CloseEditor" xml:space="preserve"><value>Редактор с файлом hosts ещё открыт. Закройте его, иначе он может снова сохранить изменения. Затем hosts будет восстановлен из резервной копии.</value></data>
+  <data name="Hosts_EditorNotChosen" xml:space="preserve"><value>не выбран — будет спрошен при открытии</value></data>
+  <data name="Hosts_Duplicate" xml:space="preserve"><value>Строка {0} уже есть в списке.</value></data>
+  <data name="Hosts_EditorSection" xml:space="preserve"><value>Редактор файла hosts</value></data>
+  <data name="Hosts_EditorChange" xml:space="preserve"><value>Изменить…</value></data>
+  <data name="Hosts_EditorReset" xml:space="preserve"><value>Сбросить</value></data>
+  <data name="Hosts_EditorHint" xml:space="preserve"><value>«Сбросить» — при следующем «Открыть hosts» редактор будет спрошен снова.</value></data>
+  <data name="Hosts_ListSection" xml:space="preserve"><value>Файл hosts: контрольные строки</value></data>
+  <data name="Hosts_ListHint" xml:space="preserve"><value>Строки «IP имя_хоста», состояние которых показывается рядом с кнопкой «Открыть hosts»: активна, закомментирована или отсутствует. Пустой список — индикатор скрыт. При закрытии YakUI изменения hosts, сделанные в сеансе, возвращаются из резервной копии.</value></data>
+  <data name="Hosts_LineWatermark" xml:space="preserve"><value>127.0.0.1 example.com</value></data>
+  <data name="Hosts_Add" xml:space="preserve"><value>Добавить</value></data>
+  <data name="Hosts_Replace" xml:space="preserve"><value>Изменить</value></data>
+  <data name="Hosts_Remove" xml:space="preserve"><value>Удалить</value></data>
+  <data name="Hosts_Up" xml:space="preserve"><value>Выше</value></data>
+  <data name="Hosts_Down" xml:space="preserve"><value>Ниже</value></data>
+  <data name="Hosts_ChooseTitle" xml:space="preserve"><value>Открыть с помощью</value></data>
+  <data name="Hosts_ChooseHint" xml:space="preserve"><value>Выберите редактор для файла hosts. Он будет запущен с правами администратора.</value></data>
+  <data name="Hosts_Browse" xml:space="preserve"><value>Обзор…</value></data>
+  <data name="Hosts_Arguments" xml:space="preserve"><value>Аргументы командной строки (необязательно)</value></data>
+  <data name="Hosts_Remember" xml:space="preserve"><value>Запомнить выбор</value></data>
+  <data name="Hosts_OpenButton" xml:space="preserve"><value>Открыть</value></data>
+  <data name="Hosts_PickExe" xml:space="preserve"><value>Выберите редактор</value></data>
+  <data name="Hosts_PickExeFilter" xml:space="preserve"><value>Программы</value></data>
+</root>
